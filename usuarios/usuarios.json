@@ -1,0 +1,48 @@
+{
+  "Usuarios": [
+    {
+      "id": 0,
+      "nombre": "Damian",
+      "apellido": "Lupo",
+      "username": "Dami_Lupo",
+      "email": "lupencio42@gmail.com",
+      "password": "AmoMiRenault21",
+      "rutinas": [],
+      "productos": [],
+      "numDeTelefono": 2234386677
+    },
+    {
+      "id": 1,
+      "nombre": "Matteo",
+      "apellido": "Daniele",
+      "username": "Matte_Daniele",
+      "email": "matteodaniele222@gmail.com",
+      "password": "AmoMiCorven110",
+      "rutinas": [],
+      "productos": [],
+      "numDeTelefono": 2235919553
+    },
+    {
+      "id": 2,
+      "nombre": "Matteo",
+      "apellido": "Manco",
+      "username": "Pilas",
+      "email": "mancmatteo@gmail.com",
+      "password": "AmoMiChevroletTracker",
+      "rutinas": [],
+      "productos": [],
+      "numDeTelefono": 2235831463
+    },
+    {
+      "id": 3,
+      "nombre": "Luciano",
+      "apellido": "Marangoni",
+      "username": "Marrongoni",
+      "email": "luchogoma@gmail.com",
+      "password": "AmoTomarElBondi",
+      "rutinas": [],
+      "productos": [],
+      "numDeTelefono": 2235486645
+    }
+  ]
+}
