@@ -13,92 +13,36 @@ import { log } from 'console';
   styleUrl: './inicio-sesion.component.css'
 })
 export class InicioSesionComponent {
-  usuarioQueInicia: Usuario=
-  {
-    id: 0,
-    nombre: "",
-    apellido: "",
-    username: "",
-    email: "",
-    password: "",
-    rutinas: [],
-    productos: [],
-    numDeTelefono: 0
-  }
-  
-  verificaciones={
-    passwordVerification: true,
-    emailVerification:true
-
-  };
+  verificador=true
   fb = inject(FormBuilder)
   usuariosService=inject(UsuarioService);
   formulario = this.fb.nonNullable.group({
     email: ["",[Validators.required,Validators.email]],
     password: ["",[Validators.required,Validators.minLength(5)]]
   })
-  //usuarios: Usuario[] = []; // Asegúrate de inicializar la variable
 
-   
-  usuarios: Usuario[]=[]
-  ngOnInit(){
-    this.usuariosService.getUsuarios().subscribe((data: Usuario[]) => {
-      this.usuarios = data; // Asigna la respuesta a la variable usuarios
-  });
-  //this.logIn()
-  }
   constructor(private router: Router) {}
-  logIn()
+  ngOnInit(): void {
+    this.usuariosService.getUsuarios().subscribe();
+  }
+  logIn(usuario : {email:string,password:string})
   {
+    this.verificador=true;
+    this.usuariosService.returnbyEmail(usuario.email); //Asigno al usuario del service, el usuario que es encontrado por mail y luego con el service hago la verificacion de si existe o no
+    if(this.usuariosService.usuarioEnSesion)
+    {
+      this.verificador=this.usuariosService.verificarForm(usuario); 
+    }
+    else{
+      this.verificador=false;
+    }
     
-    const usuario = this.formulario.getRawValue()
-    console.log(usuario);
-    let usuarioEncontrado= this.returnbyEmail(this.usuarios,usuario.email)
-    console.log(`USUARIO FUERA DEL IF DE USUARIO ENCONTRADO ${usuarioEncontrado}`);
-    if(usuarioEncontrado)
-      {
-        console.log("ENTRE ACA ALGUNA VEZ");
-        this.usuarioQueInicia=usuarioEncontrado
-        console.log(this.usuarioQueInicia);
-        this.usuarioQueInicia=usuarioEncontrado;
-        console.log(usuario.password+"PASSWORD FORM");
-        console.log(this.usuarioQueInicia.password);
-        if(this.usuarioQueInicia.email===usuario.email)
-          {
-            this.verificaciones.emailVerification=true;
-          }
-          else{
-            this.verificaciones.emailVerification=false;
-            return;
-          }
-          if(this.usuarioQueInicia.password===usuario.password)
-          {
-            this.verificaciones.passwordVerification=true;
-          }
-          else{
-            
-            this.verificaciones.passwordVerification=false
-            return;
-          }
-      }
-      else{
-        this.verificaciones.emailVerification=false;
-      }
-      
-      
   }
-  returnbyEmail(usuarios: Usuario[],email:string): Usuario | false {
-    const usuarioFind = usuarios.find(usuario => usuario.email === email);
-    return usuarioFind ? usuarioFind : false; // Devuelve el usuario encontrado o false
-  }
+
  
   onLogin() {
-    
-    
-    // Perform login logic here
-    // If login is successful:
-    //console.log(this.formulario);
-    if(!this.verificaciones.emailVerification||!this.verificaciones.passwordVerification)return;
+    this.logIn(this.formulario.getRawValue());
+    if(!this.verificador)return;
     if(this.formulario.invalid) return; ///Me permite retornar y no seguir intentando iniciar sesion
     this.router.navigate(['/dashboard']);
   }
