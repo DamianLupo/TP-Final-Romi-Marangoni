@@ -1,0 +1,103 @@
+.hero-home{
+    border-radius: 30px;
+    background-image: url('../../../images/hero.image2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 99vw;
+    height: 40vh;
+    display: flex;
+    justify-content: start;
+    padding-top: 35px;
+    gap: 75px;
+    align-items: start;
+    flex-direction: column;
+}
+.hero-home-text{
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    text-align: right;
+    padding-right: 50px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: end;
+    text-shadow: -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+}
+.hero-home-text div{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: end;
+}
+.hero-home-logo{
+    padding-left: 10%;
+}
+.hero-home-logo h1{
+    font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    font-size: 48px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5), -2px -2px 4px rgba(0,0,0,0.5);
+}
+.hero-home-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+.hero-home-whatsapp{
+    padding-right: 10%;
+}
+.hero-home-whatsapp button{
+    width: 250px;
+    height: 60px;
+    background-color: #435053;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+.hero-home-search{
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.hero-home-search-text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    text-shadow: -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+}
+.hero-home-search-input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.hero-home-search-input input{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+}
+.hero-home-search-input button{
+    width: 50%;
+    background-color: #435053;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}

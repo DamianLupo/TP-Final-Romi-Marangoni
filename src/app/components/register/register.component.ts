@@ -26,16 +26,28 @@ export class RegisterComponent {
     productos: []
   });
   router = inject(Router);
+  verificadorMail: boolean = false;
+
+  ngOnInit(): void {
+    this.usuariosService.getUsuarios().subscribe();
+  }
 
   onRegister() {
     if (this.registerForm.invalid) return;
-    this.usuariosService.getUsuarios().subscribe(usuarios => {
 
     const newUser: Usuario = {
       id: "" + (this.usuariosService.usuarios.length),
       ...this.registerForm.getRawValue(),
       numDeTelefono: Number(this.registerForm.getRawValue().numDeTelefono)
     };
+    this.usuariosService.returnbyEmail(newUser.email);
+    if(this.usuariosService.usuarioEnSesion)
+    {
+      this.verificadorMail=true;
+    }
+    if(this.verificadorMail)return;
+
+   
 
     this.usuariosService.addUsuario(newUser).subscribe({
       next: () => {
@@ -44,7 +56,6 @@ export class RegisterComponent {
       error: (e : Error) => {
         console.error('Error al registrar el usuario:', e);
       }
-    });
     });
   }
 }

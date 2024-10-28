@@ -44,6 +44,6 @@ export class InicioSesionComponent {
     this.logIn(this.formulario.getRawValue());
     if(!this.verificador)return;
     if(this.formulario.invalid) return; ///Me permite retornar y no seguir intentando iniciar sesion
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/home']);
   }
 }
