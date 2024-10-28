@@ -1,0 +1,58 @@
+<div class="login-container">
+    <div class="login-content">
+        <div class="login-header">
+            <h1>Registro</h1>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" formControlName="nombre" class="form-control">
+                @if (registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched) {
+                    <span class="error-message">El nombre es requerido</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" formControlName="apellido" class="form-control">
+                @if (registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched) {
+                    <span class="error-message">El apellido es requerido</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" formControlName="username" class="form-control">
+                @if (registerForm.get('username')?.invalid && registerForm.get('username')?.touched) {
+                    <span class="error-message">El username es requerido</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" formControlName="email" class="form-control">
+                @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+                    <span class="error-message">Ingrese un email válido</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" formControlName="password" class="form-control">
+                @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+                    <span class="error-message">La contraseña debe tener al menos 5 caracteres</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label for="numDeTelefono">Número de Teléfono:</label>
+                <input type="text" id="numDeTelefono" formControlName="numDeTelefono" class="form-control">
+                @if (registerForm.get('numDeTelefono')?.invalid && registerForm.get('numDeTelefono')?.touched) {
+                    <span class="error-message">El número de teléfono es requerido</span>
+                }
+            </div>
+
+            <button type="submit" class="btn-login" [disabled]="registerForm.invalid">Registrarse</button>
+        </form>
+    </div>
+</div>

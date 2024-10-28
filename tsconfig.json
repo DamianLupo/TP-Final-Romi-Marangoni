@@ -1,5 +1,7 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+// This file is required by the TypeScript compiler and allows TypeScript files to be compiled.
+// It is also used by IDEs to provide type information and code completion.
+// For more information about tsconfig.json, see https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -22,7 +24,8 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "types": []
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

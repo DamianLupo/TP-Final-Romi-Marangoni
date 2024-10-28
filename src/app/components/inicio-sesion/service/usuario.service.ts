@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Usuario } from '../../interface/usuario.interface';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { Usuario } from '../../../interface/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +37,8 @@ export class UsuarioService {
   }
   returnbyEmail(email: string) {
    this.usuarioEnSesion=this.usuarios.find(usuario => usuario.email === email);                   //Retorno el usuario que luego sera cargaro en 
+  }
+  addUsuario(usuario: Usuario) {
+    return this.http.post<Usuario>(`${this.urlBase}`, usuario);
   }
 }

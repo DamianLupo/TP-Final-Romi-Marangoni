@@ -1,7 +1,7 @@
 {
   "Usuarios": [
     {
-      "id": 0,
+      "id": "0",
       "nombre": "Damian",
       "apellido": "Lupo",
       "username": "Dami_Lupo",
@@ -12,7 +12,7 @@
       "numDeTelefono": 2234386677
     },
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Matteo",
       "apellido": "Daniele",
       "username": "Matte_Daniele",
@@ -23,7 +23,7 @@
       "numDeTelefono": 2235919553
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Matteo",
       "apellido": "Manco",
       "username": "Pilas",
@@ -34,7 +34,7 @@
       "numDeTelefono": 2235831463
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Luciano",
       "apellido": "Marangoni",
       "username": "Marrongoni",
@@ -43,6 +43,50 @@
       "rutinas": [],
       "productos": [],
       "numDeTelefono": 2235486645
+    },
+    {
+      "id": "4",
+      "nombre": "Matteo",
+      "apellido": "Daniele",
+      "username": "matteo_daniele",
+      "email": "matteo@matteo.com",
+      "password": "1234567",
+      "numDeTelefono": 2235919553,
+      "rutinas": [],
+      "productos": null
+    },
+    {
+      "id": "40e7",
+      "nombre": "Abril",
+      "apellido": "Galarraga",
+      "username": "abru",
+      "email": "abril@abril.com",
+      "password": "123456",
+      "numDeTelefono": 2235919553,
+      "rutinas": [],
+      "productos": null
+    },
+    {
+      "id": "6",
+      "nombre": "Pancho",
+      "apellido": "Daniele",
+      "username": "panchito",
+      "email": "mattedaniele222@gmail.com",
+      "password": "1234567",
+      "numDeTelefono": 2235919553,
+      "rutinas": [],
+      "productos": null
+    },
+    {
+      "id": "7",
+      "nombre": "caca",
+      "apellido": "caca",
+      "username": "caca",
+      "email": "caca@gmail.com",
+      "password": "12345678",
+      "numDeTelefono": 2235919553,
+      "rutinas": [],
+      "productos": null
     }
   ]
 }
