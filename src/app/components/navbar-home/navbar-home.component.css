@@ -1,0 +1,26 @@
+.navbar-home{
+    width: 99vw;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    list-style: none;
+    align-items: center; 
+    border-radius: 30px;
+    background-color: #f8f9fa; 
+    padding: 10px; 
+}
+.navbar-home > div {
+    display: flex;
+    gap: 20px; 
+}
+
+.navbar-home a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px 16px;
+}
+
+.navbar-home a:hover {
+    color: #007bff; 
+}
