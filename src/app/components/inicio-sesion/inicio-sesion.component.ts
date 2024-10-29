@@ -24,6 +24,7 @@ export class InicioSesionComponent {
   constructor(private router: Router) {}
   ngOnInit(): void {
     this.usuariosService.getUsuarios().subscribe();
+    this.usuariosService.initializeGoogleAuth();
   }
   logIn(usuario : {email:string,password:string})
   {
@@ -46,4 +47,13 @@ export class InicioSesionComponent {
     if(this.formulario.invalid) return; ///Me permite retornar y no seguir intentando iniciar sesion
     this.router.navigate(['/home']);
   }
+  onGoogleSignIn() {
+    this.usuariosService.getGoogleUserProfile().then((usuario: { id: string; email: string; nombre: string }) => {
+      console.log('Usuario autenticado:', usuario);
+      // Aquí decides cómo manejar el objeto `usuario`
+    }).catch((error: any) => {
+      console.error('Error al iniciar sesión con Google:', error);
+    });
+  }
+  
 }

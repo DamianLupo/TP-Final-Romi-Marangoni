@@ -90,11 +90,17 @@
     .login-form h1 {
         font-size: 20px;
     }
-
+    
     .login-btn {
         padding: 10px;
         font-size: 14px;
     }
+}
+.button-container{
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    margin-top: 20px; 
 }
 .error{
     color: red;
