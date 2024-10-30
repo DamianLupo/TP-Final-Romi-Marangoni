@@ -1,3 +1,4 @@
+<meta name="google-signin-client_id" content="810545965402-vqa9ko17jc088j54n73i0iok25n9bkmr.apps.googleusercontent.com">
 <div class="login-container">
     <form [formGroup]="formulario" (ngSubmit)="onLogin()">
         <h1>Iniciar Sesión</h1>
@@ -31,6 +32,14 @@
             </div>
         }
         <button type="submit" class="login-btn" (click)="onLogin()">Iniciar Sesión</button>
+        <form [formGroup]="formulario" (ngSubmit)="onLogin()">
+            <button type="submit">Iniciar sesión</button>
+          </form>
+          
+          <div id="googleSignInButton">Iniciar sesión con Google</div>
+          
         <p class="register-text">¿No tienes cuenta? <a routerLink="register">Regístrate</a></p>
+
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </form>
 </div>
