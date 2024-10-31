@@ -43,12 +43,16 @@ export class UsuarioService {
     return this.http.post<Usuario>(`${this.urlBase}`, usuario);
   }
   initializeGoogleAuth() {
-    gapi.load('auth2', () => {
-      gapi.auth2.init({
-        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
+    if (typeof gapi !== 'undefined') {
+      gapi.load('auth2', () => {
+        gapi.auth2.init({
+          client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+          cookiepolicy: 'single_host_origin',
+        });
       });
-    });
+    } else {
+      console.error('Google API client library not loaded.');
+    }
   }
 
   getGoogleUserProfile() {
