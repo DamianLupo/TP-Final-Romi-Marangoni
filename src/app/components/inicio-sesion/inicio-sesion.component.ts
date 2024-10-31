@@ -25,7 +25,7 @@ export class InicioSesionComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuariosService.getUsuarios().subscribe();
-    this.initializeGoogleAuth();
+    this.usuariosService.initializeGoogleAuth();
   }
 
   logIn(usuario: { email: string; password: string }) {
@@ -43,36 +43,12 @@ export class InicioSesionComponent implements OnInit {
     if (!this.verificador || this.formulario.invalid) return;
     this.router.navigate(['/home']);
   }
-
-  // Método para inicializar Google Sign-In
-  initializeGoogleAuth() {
-    gapi.load('auth2', () => {
-      gapi.auth2.init({
-        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com', // reemplaza con tu ID de cliente de Google
-        cookiepolicy: 'single_host_origin',
-      }).then(() => {
-        this.attachSignin(document.getElementById('googleSignInButton')!);
-      });
+  onGoogleSignIn() {
+    this.usuariosService.getGoogleUserProfile().then((usuario: { id: string; email: string; nombre: string }) => {
+      console.log('Usuario autenticado:', usuario);
+      // Aquí decides cómo manejar el objeto `usuario`
+    }).catch((error: any) => {
+      console.error('Error al iniciar sesión con Google:', error);
     });
-  }
-
-  // Método para vincular el botón de inicio de sesión de Google
-  attachSignin(element: HTMLElement) {
-    const auth2 = gapi.auth2.getAuthInstance();
-    auth2.attachClickHandler(element, {},
-      (googleUser: any) => {
-        const profile = googleUser.getBasicProfile();
-        this.ngZone.run(() => {
-          console.log('ID: ' + profile.getId());
-          console.log('Name: ' + profile.getName());
-          console.log('Image URL: ' + profile.getImageUrl());
-          console.log('Email: ' + profile.getEmail());
-          this.router.navigate(['/home']);
-        });
-      },
-      (error: any) => {
-        console.error(JSON.stringify(error, undefined, 2));
-      }
-    );
   }
 }

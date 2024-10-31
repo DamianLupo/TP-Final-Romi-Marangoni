@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule ,RouterOutlet, InicioSesionComponent],
+  imports: [CommonModule ,RouterOutlet, InicioSesionComponent, FooterComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  router = inject(Router);
   title = 'tp-final';
 }

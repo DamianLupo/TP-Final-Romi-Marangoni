@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Usuario } from '../../../interface/usuario.interface';
 
+declare var gapi: any; // Declarar `gapi` globalmente para evitar errores
 @Injectable({
   providedIn: 'root'
 })
@@ -41,4 +42,29 @@ export class UsuarioService {
   addUsuario(usuario: Usuario) {
     return this.http.post<Usuario>(`${this.urlBase}`, usuario);
   }
+  initializeGoogleAuth() {
+    if (typeof gapi !== 'undefined') {
+      gapi.load('auth2', () => {
+        gapi.auth2.init({
+          client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+          cookiepolicy: 'single_host_origin',
+        });
+      });
+    } else {
+      console.error('Google API client library not loaded.');
+    }
+  }
+
+  getGoogleUserProfile() {
+    const authInstance = gapi.auth2.getAuthInstance();
+    return authInstance.signIn().then((googleUser: any) => {
+      const profile = googleUser.getBasicProfile();
+      return {
+        id: profile.getId(),
+        email: profile.getEmail(),
+        nombre: profile.getName(),
+      };
+    });
+  }
 }
+
