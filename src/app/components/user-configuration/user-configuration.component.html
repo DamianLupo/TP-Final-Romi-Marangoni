@@ -1,5 +1,9 @@
 
-<div class="configuration-container">
+<div class="configuration-container" [ngClass]="{'open': isOpen}">
+    <div class="header">
+        <span class="close-btn" (click)="toggleMenuEvent()">✕</span>
+        <h1>Profile</h1>
+    </div>
     <form [formGroup]="configurationForm" (ngSubmit)="updateUser()">
         <div class="form-group">
             <label for="nombre">Nombre:</label>
