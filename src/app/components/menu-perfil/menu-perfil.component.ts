@@ -1,21 +1,36 @@
-import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuStateService } from '../../service/menu-state.service';
 import { UsuarioService } from '../../service/usuario.service';
-import { OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { NgZone } from '@angular/core';
+import { UserConfigurationComponent } from '../user-configuration/user-configuration.component';
 @Component({
   selector: 'app-menu-perfil',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, UserConfigurationComponent],
   templateUrl: './menu-perfil.component.html',
   styleUrl: './menu-perfil.component.css'
 })
 export class MenuPerfilComponent implements OnInit {
+  isOpen: boolean = false;
+  isOpenConfiguration: boolean = false;
+  toggleMenu() {
+    this.menuStateService.closeMenu();
+    this.isOpenConfiguration=false;
+  }
+  toggleConfiguration()
+  {
+    this.isOpenConfiguration=!this.isOpenConfiguration;
+  }
   ngOnInit(): void {
-    this.usuariosService.initializeUsuarioEnSesion(); // Llama a la función para inicializar el usuario en sesión
+    this.menuStateService.isOpen$.subscribe(isOpen => {
+      this.isOpen = isOpen;
+    });
   }
   usuariosService = inject(UsuarioService);
-  constructor(private router: Router, private ngZone: NgZone){}
+  usuario = this.usuariosService.usuarioEnSesion;
+  isLogged = this.usuario !== undefined;
+  constructor(private router: Router, private menuStateService: MenuStateService){}
   requestPassword()
   {
     let password: string | null; 
@@ -36,8 +51,7 @@ export class MenuPerfilComponent implements OnInit {
     let verificar=this.requestPassword()
     if(verificar)
     {
-      this.router.navigate([`/configuration/${this.usuariosService.usuarioEnSesion!.id}`]);
-
+      this.toggleConfiguration();
     }
   }
   accesToDelete()

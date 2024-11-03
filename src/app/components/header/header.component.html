@@ -1,10 +1,23 @@
 <nav class="navbar">
-    <div class="logo">Home</div>
+    <a routerLink="/home" class="logo">Home</a>
     <ul class="nav-links">
-        <li><a href="http://localhost:4200/menu"><i class="fas fa-cog"></i> Configuración</a></li>
-        <li><a href="#">Home</a></li>
+        <!-- <li><a href="http://localhost:4200/menu"><i class="fas fa-cog"></i> Configuración</a></li> -->
+        <li><a routerLink="/home">Home</a></li>
         <li><a href="#">Explora productos y rutinas</a></li>
         <li><a href="#">Sign Up</a></li>
     </ul>
-    <button class="sign-in-btn">Sign In</button>
+    <div class="sign-in-btn">
+        <div class="dropdown">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="user-image">
+            <div class="dropdown-content">
+                <a class="modify-btn" (click)="toggleMenu()"><i class="fas fa-cog"></i> Configuración</a>
+                @if(isLogged){
+                    <a href="#" class="delete-btn" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                }
+                @else{
+                    <a routerLink="/login" class="login-btn"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
+                }
+            </div>
+        </div>
+    </div>
 </nav>
