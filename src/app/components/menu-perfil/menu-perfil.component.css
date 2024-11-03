@@ -5,15 +5,34 @@ body {
   height: 100vh;
   background-color: #f7f7f7;
 }
-
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #7a7a7a6b;
+  display: none;
+  z-index: 1000;
+}
 .profile-container {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.open{
+  display: block;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -96,4 +115,16 @@ body {
   border-radius: 5px;
   display: block; 
   margin-top: 10px; 
+}
+
+.profile-container.open {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.open-configuration{
+  display: none;
 }

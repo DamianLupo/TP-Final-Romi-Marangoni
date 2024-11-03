@@ -1,17 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, inject, Input, NgZone, OnInit, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioService } from '../../service/usuario.service';
-import { Router, RouterLink } from '@angular/router';
-import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-user-configuration',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './user-configuration.component.html',
   styleUrls: ['./user-configuration.component.css'] // Asegúrate de que el nombre de la propiedad sea styleUrls
 })
 export class UserConfigurationComponent implements OnInit {
+  @Input() isOpen: boolean = false;
+  @Output() toggleMenu = new EventEmitter<void>();
+
+  toggleMenuEvent()
+  {
+    this.toggleMenu.emit();
+  }
   constructor(private router: Router, private ngZone: NgZone){}
   fb = inject(FormBuilder);
   usuariosService = inject(UsuarioService);
@@ -30,29 +37,14 @@ export class UserConfigurationComponent implements OnInit {
     // Inicializa el usuario en sesión
     this.usuariosService.initializeUsuarioEnSesion();
 
-    if (this.usuariosService.usuarioEnSesion) {
-      this.configurationForm.patchValue({
-        nombre: this.usuariosService.usuarioEnSesion.nombre,
-        apellido: this.usuariosService.usuarioEnSesion.apellido,
-        username: this.usuariosService.usuarioEnSesion.username,
-        email: this.usuariosService.usuarioEnSesion.email,
-        password:this.usuariosService.usuarioEnSesion.password,
-        numDeTelefono: this.usuariosService.usuarioEnSesion.numDeTelefono
-      });
-    } else {
+    if (this.usuariosService.usuarioEnSesion) { this.configurationForm.patchValue(this.usuariosService.usuarioEnSesion); } else {
      
       console.error('No hay usuario en sesión');
     }
   }
   updateUser(){
     
-
-    this.usuariosService.usuarioEnSesion!.nombre=this.configurationForm.getRawValue().nombre
-    this.usuariosService.usuarioEnSesion!.apellido=this.configurationForm.getRawValue().apellido
-    this.usuariosService.usuarioEnSesion!.username=this.configurationForm.getRawValue().username
-    this.usuariosService.usuarioEnSesion!.email=this.configurationForm.getRawValue().email
-    this.usuariosService.usuarioEnSesion!.password=this.configurationForm.getRawValue().password
-    this.usuariosService.usuarioEnSesion!.numDeTelefono=this.configurationForm.getRawValue().numDeTelefono
+    Object.assign(this.usuariosService.usuarioEnSesion!, {...this.configurationForm.getRawValue(), id: this.usuariosService.usuarioEnSesion!.id});
     console.log(this.usuariosService.usuarioEnSesion!.id);
     this.usuariosService.putUser(this.usuariosService.usuarioEnSesion!,this.usuariosService.usuarioEnSesion!.id).subscribe(
       {
