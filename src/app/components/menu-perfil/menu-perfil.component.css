@@ -78,7 +78,22 @@ body {
 .modify-btn {
   background: none;
   border: none;
-  color: #007bff;
+  color: black;
   cursor: pointer;
   font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  display: block; 
+  margin-top: 10px; 
+}
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff1100;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  display: block; 
+  margin-top: 10px; 
 }

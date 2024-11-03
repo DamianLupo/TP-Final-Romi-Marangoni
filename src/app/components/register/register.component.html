@@ -48,7 +48,7 @@
 
             <div class="form-group">
                 <label for="numDeTelefono">Número de Teléfono:</label>
-                <input type="text" id="numDeTelefono" formControlName="numDeTelefono" class="form-control">
+                <input type="number" id="numDeTelefono" formControlName="numDeTelefono" class="form-control">
                 @if (registerForm.get('numDeTelefono')?.invalid && registerForm.get('numDeTelefono')?.touched) {
                     <span class="error-message">El número de teléfono es requerido</span>
                 }

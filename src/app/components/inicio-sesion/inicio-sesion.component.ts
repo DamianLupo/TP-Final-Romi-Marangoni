@@ -1,7 +1,7 @@
 import { Component, inject, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { UsuarioService } from './service/usuario.service';
+import { UsuarioService } from '../../service/usuario.service';
 
 declare const gapi: any;
 
@@ -41,6 +41,7 @@ export class InicioSesionComponent implements OnInit {
   onLogin() {
     this.logIn(this.formulario.getRawValue());
     if (!this.verificador || this.formulario.invalid) return;
+    console.log(`USUARIO EN LOGIN: ${this.usuariosService.usuarioEnSesion}`);
     this.router.navigate(['/home']);
   }
   onGoogleSignIn() {

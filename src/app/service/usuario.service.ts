@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Usuario } from '../../../interface/usuario.interface';
+import { Usuario } from '../interface/usuario.interface';
 
 declare var gapi: any; // Declarar `gapi` globalmente para evitar errores
 @Injectable({
@@ -9,10 +9,18 @@ declare var gapi: any; // Declarar `gapi` globalmente para evitar errores
 })
 export class UsuarioService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   urlBase: string = "http://localhost:3000/Usuarios"
   usuarioEnSesion: Usuario|undefined
+  
   usuarios: Usuario[]=[]
+  initializeUsuarioEnSesion(): void {
+    this.usuarioEnSesion = this.obtenerUsuarioDeLocalStorage(); //Guardo el usuario del local storage para no perderlo entre la navegacion de paginas
+  }
+  private obtenerUsuarioDeLocalStorage(): Usuario | undefined {
+    const usuarioGuardado = localStorage.getItem('usuarioEnSesion');
+    return usuarioGuardado ? JSON.parse(usuarioGuardado) : undefined;  //Obtengo el usuario guardado en el local storage
+  }
   getUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.urlBase).pipe(
       tap(data => this.usuarios = data) // Guarda los usuarios cargados
@@ -38,6 +46,7 @@ export class UsuarioService {
   }
   returnbyEmail(email: string) {
    this.usuarioEnSesion=this.usuarios.find(usuario => usuario.email === email);                   //Retorno el usuario que luego sera cargaro en 
+   localStorage.setItem('usuarioEnSesion', JSON.stringify(this.usuarioEnSesion));
   }
   addUsuario(usuario: Usuario) {
     return this.http.post<Usuario>(`${this.urlBase}`, usuario);
@@ -66,5 +75,19 @@ export class UsuarioService {
       };
     });
   }
+  cerrarSesion(): void {
+    this.usuarioEnSesion = undefined;
+    localStorage.removeItem('usuarioEnSesion');
+  }
+  putUser (user: Usuario | undefined, id: String | undefined): Observable<Usuario>{
+    return this.http.put<Usuario>(`${this.urlBase}/${id}`, user);
+  }
+  deleteUser(id: string | undefined): Observable<void>{
+    return this.http.delete<void>(`${this.urlBase}/${id}`);
+  }
+  setID(){
+    return Number(this.usuarios[this.usuarios.length - 1].id) + 1;
+  }
 }
+
 

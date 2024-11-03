@@ -1,0 +1,38 @@
+<div class="profile-container">
+    <div class="header">
+        <span class="close-btn">✕</span>
+        <h1>Profile</h1>
+    </div>
+    
+    @if (usuariosService.usuarioEnSesion) { }
+  
+    <div class="profile-info">
+        <div class="user-info">
+            <h2>{{usuariosService.usuarioEnSesion!.nombre}}</h2>
+            <p>&#64;{{usuariosService.usuarioEnSesion!.username}}</p>
+        </div>
+    </div>
+  
+    <div class="options">
+        <div class="option">
+            <div class="icon"><i class="fas fa-user"></i></div>
+            <span>{{usuariosService.usuarioEnSesion!.nombre}} {{usuariosService.usuarioEnSesion!.apellido}}</span>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fas fa-key"></i></div>
+            <span>*********</span>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fas fa-phone"></i></div>
+            <span>{{ usuariosService.usuarioEnSesion!.numDeTelefono.toString().slice(0, 3) + '-***-' + usuariosService.usuarioEnSesion!.numDeTelefono.toString().slice(-2) }}</span>
+        </div>
+        <div class="option">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <span>{{ usuariosService.usuarioEnSesion!.email.slice(0, 3) + '...@' + usuariosService.usuarioEnSesion!.email.split('@')[1] }}</span>
+        </div>
+  
+        <a (click)="accesToConfiguration()" class="modify-btn">Modificar usuario</a>
+        <a (click)="accesToDelete()" class="delete-btn">Borrar usuario</a>
+    </div>
+  </div>
+  

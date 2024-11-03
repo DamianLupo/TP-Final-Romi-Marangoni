@@ -4,9 +4,9 @@
       "id": "0",
       "nombre": "Damian",
       "apellido": "Lupo",
-      "username": "Dami_Lupo",
+      "username": "dami_lupo",
       "email": "lupencio42@gmail.com",
-      "password": "AmoMiRenault21",
+      "password": "123456",
       "rutinas": [],
       "productos": [],
       "numDeTelefono": 2234386677
@@ -84,17 +84,6 @@
       "username": "Lauti",
       "email": "lauti@gmail.com",
       "password": "123456",
-      "numDeTelefono": 2235919553,
-      "rutinas": [],
-      "productos": null
-    },
-    {
-      "id": "8",
-      "nombre": "Matteo",
-      "apellido": "lauit",
-      "username": "asdasdasd",
-      "email": "pilas@gmail.com",
-      "password": "1234567",
       "numDeTelefono": 2235919553,
       "rutinas": [],
       "productos": null

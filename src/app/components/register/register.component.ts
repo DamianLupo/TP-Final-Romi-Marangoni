@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from '../../interface/usuario.interface';
-import { UsuarioService } from '../inicio-sesion/service/usuario.service';
+import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
   selector: 'app-register',
@@ -36,7 +36,7 @@ export class RegisterComponent {
     if (this.registerForm.invalid) return;
 
     const newUser: Usuario = {
-      id: "" + (this.usuariosService.usuarios.length),
+      id: "" + (this.usuariosService.setID()),
       ...this.registerForm.getRawValue(),
       numDeTelefono: Number(this.registerForm.getRawValue().numDeTelefono)
     };
