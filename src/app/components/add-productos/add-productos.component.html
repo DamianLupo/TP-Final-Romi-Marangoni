@@ -1,0 +1,45 @@
+<form [formGroup]="formulario" (ngSubmit)="addProducto()">
+    <label for=""> Producto: </label>
+
+    <label for=""> Id: </label>
+    <input type="number" formControlName="id">
+    @if (formulario.controls['id'].getError('required')) {
+        <p>El id es requerido</p>
+    }
+
+    <label for=""> Nombre </label>
+
+    <input type="text" formControlName="nombre">
+    @if (formulario.controls['nombre'].getError('required')) {
+        <p>El nombre es requerido</p>
+    }
+
+    @if (formulario.controls['nombre'].getError('minlength')) {
+        <p>El nombre debe tener al menos 3 caracteres</p>
+    }
+
+    <label for=""> Precio: </label>
+
+    <input type="number" formControlName="precio">
+    @if (formulario.controls['precio'].getError('required')) {
+        <p>El precio es requerido</p>
+    }
+
+    <label for=""> Descripcion: </label>
+    <input type="text" formControlName="descripcion">
+    @if (formulario.controls['descripcion'].getError('required')) {
+        <p>La descripcion es requerida</p>
+    }
+
+    @if (formulario.controls['descripcion'].getError('minlength')) {
+        <p>La descripcion debe tener al menos 10 caracteres</p>
+    }
+
+    <label for=""> Imagen: </label>
+    <input type="text" formControlName="imagen">
+    @if (formulario.controls['imagen'].getError('required')) {
+        <p>La imagen es requerida</p>
+    }
+
+    <button>Agregar Producto </button>    
+</form>

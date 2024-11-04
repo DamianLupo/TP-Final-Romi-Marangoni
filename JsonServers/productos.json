@@ -1,0 +1,53 @@
+{
+  "productos": [
+    {
+      "id": "0",
+      "nombre": "Mancuernas",
+      "precio": 200,
+      "descripcion": "De entre 2.5kg hasta 40kg",
+      "imagen": "url/imagen/wtf"
+    },
+    {
+      "id": 0,
+      "nombre": "Mancuerna",
+      "precio": 200,
+      "descripcion": "Hola234845",
+      "imagen": "url/base"
+    },
+    {
+      "id": "0",
+      "nombre": "Mancuernas",
+      "precio": 200,
+      "descripcion": "De entre 2.5kg hasta 40kg",
+      "imagen": "url/imagen/wtf"
+    },
+    {
+      "id": 0,
+      "nombre": "Mancuerna",
+      "precio": 200,
+      "descripcion": "Hola234845",
+      "imagen": "url/base"
+    },
+    {
+      "id": "0",
+      "nombre": "Mancuernas",
+      "precio": 200,
+      "descripcion": "De entre 2.5kg hasta 40kg",
+      "imagen": "url/imagen/wtf"
+    },
+    {
+      "id": 0,
+      "nombre": "Mancuerna",
+      "precio": 200,
+      "descripcion": "Hola234845",
+      "imagen": "url/base"
+    },
+    {
+      "id": "0",
+      "nombre": "Mancuernas",
+      "precio": 200,
+      "descripcion": "De entre 2.5kg hasta 40kg",
+      "imagen": "url/imagen/wtf"
+    }
+  ]
+}
