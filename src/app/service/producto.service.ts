@@ -23,4 +23,7 @@ export class ProductoService {
   deleteProducto(id: number):Observable<Producto>{
     return this.http.delete<Producto>(`${this.urlBase}/${id}`);
   }
+  getProducto(id: string | null):Observable<Producto>{
+    return this.http.get<Producto>(`${this.urlBase}/${id}`);
+  }
 }
