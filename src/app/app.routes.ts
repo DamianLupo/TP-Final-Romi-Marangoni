@@ -6,6 +6,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { PoliticasComponent } from './components/politicas/politicas.component';
 import { PageProductosComponent } from './pages/page-productos/page-productos/page-productos.component';
 import { ProductosDetailsComponent } from './components/productos-details/productos-details.component';
+import { RutinasComponent } from './components/rutinas/rutinas.component';
 
 export const routes: Routes = [
   { path: '', component: InicioSesionComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   {path:'sobre-nosotros', component: AboutUsComponent},
   {path: 'terminos-y-condiciones', component: PoliticasComponent},
   {path: 'detalles/:id', component: ProductosDetailsComponent},//cambiar por DETALLES
-  {path: 'productos', component: PageProductosComponent}
+  {path: 'productos', component: PageProductosComponent},
+  {path: 'rutinas', component: RutinasComponent}
 ];
