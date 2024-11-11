@@ -2,7 +2,7 @@ export interface RutinaInterface {
   id?: string;
   nombre: string;
   descripcion: string;
-  imagen: string | null;
+  imagen: string;
   precio: number;
   urlDescarga: string;
 }
