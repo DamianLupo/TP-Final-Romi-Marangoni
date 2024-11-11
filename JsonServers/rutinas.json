@@ -1,0 +1,12 @@
+{
+  "rutinas": [
+    {
+      "id": 1,
+      "nombre": "Rutina 1",
+      "descripcion": "Rutina de ejercicios para principiantes",
+      "imagen": "ruta/a/imagen1.jpg",
+      "precio": 100,
+      "urlDescarga": "ruta/a/descarga1.pdf"
+    }
+  ]
+}
