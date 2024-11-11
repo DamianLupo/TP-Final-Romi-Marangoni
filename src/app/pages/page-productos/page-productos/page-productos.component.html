@@ -1,1 +1,15 @@
-<app-list-productos></app-list-productos>
+<div class="product-general">
+  <h1>Productos</h1>
+  <div class="grid-product">
+
+    @for(producto of listaProductos.slice(0,5); track producto.id){
+    <div class="producto">
+      <img [src]="producto.imagen" class="imagen-producto" alt="imagen">
+      <h2>{{ producto.nombre }}</h2>
+      <p>${{ producto.precio }}</p>
+      <button routerLink="/detalles/{{producto.id}}" class="btn-ver-detalles">ver detalles</button>
+    </div>
+    }
+  </div>
+
+</div>
