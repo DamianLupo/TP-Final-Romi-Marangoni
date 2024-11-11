@@ -1,51 +1,51 @@
 {
   "productos": [
     {
-      "id": "0",
+      "id": "1",
       "nombre": "Mancuernas",
-      "precio": 200,
+      "precio": 500,
       "descripcion": "De entre 2.5kg hasta 40kg",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": 0,
+      "id": 2,
       "nombre": "Mancuerna",
       "precio": 200,
       "descripcion": "Hola234845",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "0",
+      "id": "3",
       "nombre": "Mancuernas",
-      "precio": 200,
+      "precio": 300,
       "descripcion": "De entre 2.5kg hasta 40kg",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": 0,
+      "id": 4,
       "nombre": "Mancuerna",
-      "precio": 200,
+      "precio": 2700,
       "descripcion": "Hola234845",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "0",
+      "id": "5",
       "nombre": "Mancuernas",
-      "precio": 200,
+      "precio": 8760,
       "descripcion": "De entre 2.5kg hasta 40kg",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": 0,
+      "id": 6,
       "nombre": "Mancuerna",
-      "precio": 200,
+      "precio": 10000,
       "descripcion": "Hola234845",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "0",
+      "id": "7",
       "nombre": "Mancuernas",
-      "precio": 200,
+      "precio": 250,
       "descripcion": "De entre 2.5kg hasta 40kg",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     }
