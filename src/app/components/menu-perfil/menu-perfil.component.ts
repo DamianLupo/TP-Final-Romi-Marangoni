@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuStateService } from '../../service/menu-state.service';
 import { UsuarioService } from '../../service/usuario.service';
@@ -7,16 +8,27 @@ import { UserConfigurationComponent } from '../user-configuration/user-configura
 @Component({
   selector: 'app-menu-perfil',
   standalone: true,
-  imports: [CommonModule, UserConfigurationComponent],
+  imports: [CommonModule, UserConfigurationComponent, ReactiveFormsModule],
   templateUrl: './menu-perfil.component.html',
   styleUrl: './menu-perfil.component.css'
 })
 export class MenuPerfilComponent implements OnInit {
   isOpen: boolean = false;
   isOpenConfiguration: boolean = false;
+  closeConfiguration: boolean = false;
+  openPasswordModification: boolean = false;
+  openPasswordDelete: boolean = false;
+  fb = inject(FormBuilder);
+  passwordForm = this.fb.nonNullable.group({
+    password: ['', Validators.required]
+  });
   toggleMenu() {
     this.menuStateService.closeMenu();
+    this.openPasswordModification=false;
+    this.openPasswordDelete=false;
+    this.closeConfiguration=false;
     this.isOpenConfiguration=false;
+    this.passwordForm.reset();
   }
   toggleConfiguration()
   {
@@ -33,17 +45,11 @@ export class MenuPerfilComponent implements OnInit {
   constructor(private router: Router, private menuStateService: MenuStateService){}
   requestPassword()
   {
-    let password: string | null; 
-    do {
-        password = prompt('Ingrese su contraseña:');
-        if (password === null) {
-            alert('Se ha cancelado la operación.'); // Alerta si se cancela
+
+    let password = this.passwordForm.get('password')?.value;
+        if (password === null || password !== this.usuariosService.usuarioEnSesion?.password) {
             return; // Salir del método si se cancela
         }
-        if (password !== this.usuariosService.usuarioEnSesion!.password) {
-            alert('Contraseña incorrecta. Inténtalo de nuevo.'); // Alerta si es incorrecta
-        }
-    } while (password !== this.usuariosService.usuarioEnSesion!.password); 
     return true;
   }
   accesToConfiguration()
