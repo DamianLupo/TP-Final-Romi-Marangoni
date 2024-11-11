@@ -19,7 +19,7 @@ export class AddProductosComponent {
   productoService = inject(ProductoService);
 
   formulario = this.fb.nonNullable.group({
-    id: [0, [Validators.required]],
+    id: [""],
     nombre: ['', [Validators.required, Validators.minLength(3)]],
     precio: [0, [Validators.required]],
     descripcion: ['', [Validators.required, Validators.minLength(10)]],

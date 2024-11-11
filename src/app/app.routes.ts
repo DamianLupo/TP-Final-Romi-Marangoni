@@ -7,6 +7,8 @@ import { PoliticasComponent } from './components/politicas/politicas.component';
 import { PageProductosComponent } from './pages/page-productos/page-productos/page-productos.component';
 import { ProductosDetailsComponent } from './components/productos-details/productos-details.component';
 import { RutinasComponent } from './components/rutinas/rutinas.component';
+import path from 'path';
+import { AddRutinasComponent } from './components/add-rutinas/add-rutinas.component';
 
 export const routes: Routes = [
   { path: '', component: InicioSesionComponent },
@@ -17,5 +19,6 @@ export const routes: Routes = [
   {path: 'terminos-y-condiciones', component: PoliticasComponent},
   {path: 'detalles/:id', component: ProductosDetailsComponent},//cambiar por DETALLES
   {path: 'productos', component: PageProductosComponent},
-  {path: 'rutinas', component: RutinasComponent}
+  {path: 'rutinas', component: RutinasComponent},
+  {path: "addRutinas", component: AddRutinasComponent}
 ];

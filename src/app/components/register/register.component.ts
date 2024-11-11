@@ -38,6 +38,7 @@ export class RegisterComponent {
     const newUser: Usuario = {
       id: "" + (this.usuariosService.setID()),
       ...this.registerForm.getRawValue(),
+      isAdmin: false,
       numDeTelefono: Number(this.registerForm.getRawValue().numDeTelefono)
     };
     this.usuariosService.returnbyEmail(newUser.email);

@@ -1,12 +1,20 @@
 {
   "rutinas": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Rutina 1",
       "descripcion": "Rutina de ejercicios para principiantes",
       "imagen": "ruta/a/imagen1.jpg",
       "precio": 100,
       "urlDescarga": "ruta/a/descarga1.pdf"
+    },
+    {
+      "id": "2",
+      "nombre": "Pene",
+      "descripcion": "Rutina para estiramiento de pene",
+      "precio": 1000000,
+      "urlDescarga": "urlexample.com",
+      "imagen": "C:\\fakepath\\retrwavelaso.jpg"
     }
   ]
 }

@@ -7,5 +7,6 @@ export interface Usuario{
     password: string,
     rutinas: [],
     productos: [],
-    numDeTelefono: number
+    numDeTelefono: number,
+    isAdmin: boolean
 }
