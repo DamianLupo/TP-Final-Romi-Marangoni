@@ -1,0 +1,78 @@
+.add-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.header-rutinas p {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #000;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.formGroup {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.formGroup:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+    .add-ctn {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .header-rutinas p {
+        font-size: 20px;
+    }
+
+    .formGroup {
+        font-size: 14px;
+    }
+}
+.add-btn {
+    padding: 12px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #333;
+}

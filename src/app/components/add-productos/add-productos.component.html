@@ -1,12 +1,5 @@
 <form [formGroup]="formulario" (ngSubmit)="addProducto()">
     <label for=""> Producto: </label>
-
-    <label for=""> Id: </label>
-    <input type="number" formControlName="id">
-    @if (formulario.controls['id'].getError('required')) {
-        <p>El id es requerido</p>
-    }
-
     <label for=""> Nombre </label>
     <input type="text" formControlName="nombre">
     @if (formulario.controls['nombre'].getError('required')) {

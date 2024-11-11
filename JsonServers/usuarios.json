@@ -9,7 +9,8 @@
       "password": "123456",
       "rutinas": [],
       "productos": [],
-      "numDeTelefono": 2234386677
+      "numDeTelefono": 2234386677,
+      "isAdmin": false
     },
     {
       "id": "1",
@@ -20,7 +21,8 @@
       "password": "AmoMiCorven110",
       "rutinas": [],
       "productos": [],
-      "numDeTelefono": 2235919553
+      "numDeTelefono": 2235919553,
+      "isAdmin": false
     },
     {
       "id": "2",
@@ -31,7 +33,8 @@
       "password": "AmoMiChevroletTracker",
       "rutinas": [],
       "productos": [],
-      "numDeTelefono": 2235831463
+      "numDeTelefono": 2235831463,
+      "isAdmin": false
     },
     {
       "id": "3",
@@ -42,7 +45,8 @@
       "password": "AmoTomarElBondi",
       "rutinas": [],
       "productos": [],
-      "numDeTelefono": 2235486645
+      "numDeTelefono": 2235486645,
+      "isAdmin": false
     },
     {
       "id": "4",
@@ -53,7 +57,8 @@
       "password": "1234567",
       "numDeTelefono": 2235919553,
       "rutinas": [],
-      "productos": null
+      "productos": null,
+      "isAdmin": false
     },
     {
       "id": "40e7",
@@ -64,7 +69,8 @@
       "password": "123456",
       "numDeTelefono": 2235919553,
       "rutinas": [],
-      "productos": null
+      "productos": null,
+      "isAdmin": false
     },
     {
       "id": "6",
@@ -75,7 +81,8 @@
       "password": "1234567",
       "numDeTelefono": 2235919553,
       "rutinas": [],
-      "productos": null
+      "productos": null,
+      "isAdmin": false
     },
     {
       "id": "7",
@@ -86,7 +93,21 @@
       "password": "123456",
       "numDeTelefono": 2235919553,
       "rutinas": [],
-      "productos": null
+      "productos": null,
+      "isAdmin": false
+    },
+    {
+      "id": "8",
+      "nombre": "",
+      "apellido": "",
+      "username": "",
+      "email": "romimarangoni@gmail.com",
+      "password": "romifit123",
+      "rutinas": [],
+      "productos": [],
+      "numDeTelefono": null,
+      "isAdmin": true
     }
   ]
 }
+
