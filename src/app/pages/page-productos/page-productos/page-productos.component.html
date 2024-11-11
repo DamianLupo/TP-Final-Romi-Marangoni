@@ -1,6 +1,14 @@
 <div class="product-general">
   <h1>Productos</h1>
+
+  <select #ordenSelect (change)="ordenarPorPrecio(ordenSelect.value)">
+    <option value="">Selecciona una opción</option>
+    <option value="asc">Menor a mayor precio</option>
+    <option value="desc">Mayor a menor precio</option>
+</select>
+
   <div class="grid-product">
+
 
     @for(producto of listaProductos.slice(0,5); track producto.id){
     <div class="producto">
@@ -13,3 +21,4 @@
   </div>
 
 </div>
+
