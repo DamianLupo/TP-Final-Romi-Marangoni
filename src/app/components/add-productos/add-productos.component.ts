@@ -25,6 +25,18 @@ export class AddProductosComponent {
     descripcion: ['', [Validators.required, Validators.minLength(10)]],
     imagen: ['', [Validators.required]]
   })
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.formulario.patchValue({
+          imagen: reader.result as string
+        });
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 
   addProducto(){
     if(this.formulario.invalid) return ;
