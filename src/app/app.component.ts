@@ -8,10 +8,11 @@ import { MenuPerfilComponent } from './components/menu-perfil/menu-perfil.compon
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FooterComponent, HeaderComponent, MenuPerfilComponent],
+  imports: [CommonModule, RouterOutlet, FooterComponent, MenuPerfilComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   router = inject(Router);
   title = 'tp-final';
