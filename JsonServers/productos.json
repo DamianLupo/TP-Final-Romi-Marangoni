@@ -1,7 +1,7 @@
 {
   "productos": [
     {
-      "id": "1",
+      "id": 1,
       "nombre": "Mancuernas",
       "precio": 500,
       "descripcion": "De entre 2.5kg hasta 40kg",
@@ -15,7 +15,7 @@
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "3",
+      "id": 3,
       "nombre": "Mancuernas",
       "precio": 300,
       "descripcion": "De entre 2.5kg hasta 40kg",
@@ -29,7 +29,7 @@
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "5",
+      "id": 5,
       "nombre": "Mancuernas",
       "precio": 8760,
       "descripcion": "De entre 2.5kg hasta 40kg",
@@ -43,7 +43,7 @@
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "7",
+      "id": 7,
       "nombre": "Mancuernas",
       "precio": 250,
       "descripcion": "De entre 2.5kg hasta 40kg",

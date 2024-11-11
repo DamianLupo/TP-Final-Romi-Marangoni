@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { PoliticasComponent } from './components/politicas/politicas.component';
 import { PageProductosComponent } from './pages/page-productos/page-productos/page-productos.component';
-import { ProductosDetailsComponent } from './productos-details/productos-details.component';
+import { ProductosDetailsComponent } from './components/productos-details/productos-details.component';
 
 export const routes: Routes = [
   { path: '', component: InicioSesionComponent },

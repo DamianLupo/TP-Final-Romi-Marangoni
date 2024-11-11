@@ -4,5 +4,5 @@
     <img [src]="producto.imagen" alt="imagen">
     <p>{{producto.descripcion}}</p>
     <p>{{producto.precio}} USD</p>
-    <button>Comprar</button>
+    <button (click)="createPaymentPreference()">Comprar</button>
 </div>
