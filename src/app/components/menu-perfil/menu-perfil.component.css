@@ -6,7 +6,7 @@ body {
   background-color: #f7f7f7;
 }
 .container{
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -56,7 +56,9 @@ body {
   margin-top: 20px;
   padding: 10px 0;
 }
-
+.close-configuration{
+  display: none;
+}
 .user-info h2 {
   font-size: 20px;
   font-weight: bold;
@@ -127,4 +129,29 @@ body {
 }
 .open-configuration{
   display: none;
+}
+.password-form{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.password-form input{
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+}
+.password-form button{
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.password-container{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }

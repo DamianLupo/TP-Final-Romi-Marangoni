@@ -6,7 +6,9 @@
         </div>
         
         @if (isLogged) { 
-            <div class="profile-info">
+            <div [ngClass]="{'close-configuration': closeConfiguration}">
+                <div>
+                    <div class="profile-info"></div>
                 <div class="user-info">
                     <h2>{{usuariosService.usuarioEnSesion!.nombre}}</h2>
                     <p>&#64;{{usuariosService.usuarioEnSesion!.username}}</p>
@@ -31,15 +33,42 @@
                     <span>{{ usuariosService.usuarioEnSesion!.email.slice(0, 3) + '...@' + usuariosService.usuarioEnSesion!.email.split('@')[1] }}</span>
                 </div>
           
-                <a (click)="accesToConfiguration()" class="modify-btn">Modificar usuario</a>
-                <a (click)="accesToDelete()" class="delete-btn">Borrar usuario</a>
+                <a (click)="openPasswordModification=true; closeConfiguration=true;" class="modify-btn">Modificar usuario</a>
+                <a (click)="openPasswordDelete=true; closeConfiguration=true;" class="delete-btn">Borrar usuario</a>
             </div>
+            </div>
+            
         }
         @else{
             <div class="profile-info">
                 <h2>No hay usuario en sesión</h2>
             </div>
         }
-      </div>    
+        @if (openPasswordModification) {
+            <div class="password-container">
+                <p>Para modificar tu usuario, introduce tu contraseña</p>
+                <form [formGroup]="passwordForm" (ngSubmit)="accesToConfiguration()" class="password-form">
+                <input type="password" formControlName="password" placeholder="Contraseña">
+                <button type="submit">Acceder</button>
+                </form>
+                @if((passwordForm.get('password')?.value !== usuariosService.usuarioEnSesion?.password || passwordForm.get('password')?.value !== '' ) && passwordForm.controls['password'].touched){
+                    <p>Contraseña incorrecta</p>
+                }
+            </div>
+            }
+        @if(openPasswordDelete){
+            <div class="password-container">
+                <p>Para borrar tu cuenta, introduce tu contraseña</p>
+                <form [formGroup]="passwordForm" (ngSubmit)="accesToDelete()" class="password-form">
+                  <input type="password" formControlName="password" placeholder="Contraseña">
+                  <button type="submit">Acceder</button>
+                </form>
+                @if((passwordForm.get('password')?.value !== usuariosService.usuarioEnSesion?.password || passwordForm.get('password')?.value !== '' ) && passwordForm.controls['password'].touched){
+                    <p>Contraseña incorrecta</p>
+                }
+            </div>
+        }
+      </div>   
+    
       <app-user-configuration [isOpen]="isOpenConfiguration" (toggleMenu)="toggleMenu()"></app-user-configuration>
 </div>
