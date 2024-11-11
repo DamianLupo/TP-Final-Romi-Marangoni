@@ -27,10 +27,26 @@
         <p>La descripcion debe tener al menos 10 caracteres</p>
     }
 
-    <label for=""> Imagen: </label>
-    <input type="text" formControlName="imagen">
-    @if (formulario.controls['imagen'].getError('required')) {
-        <p>La imagen es requerida</p>
+    <div class="input-group">
+        <label for="imagen">Imagen de la rutina:</label>
+        <input type="file" 
+               id="imagen" 
+               accept="image/*"
+               (change)="onFileSelected($event)"
+               [class.is-invalid]="formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched">
+        @if(formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched) {
+            <div class="error-message">
+                <p>La imagen es requerida</p>
+            </div>
+        }
+    </div>
+
+    @if(formulario.get('imagen')?.value) {
+        <div class="preview-container">
+            <img [src]="formulario.get('imagen')?.value" 
+                 alt="Vista previa" 
+                 class="preview-image">
+        </div>
     }
 
     <button>Agregar Producto </button>    
