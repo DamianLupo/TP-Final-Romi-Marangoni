@@ -16,22 +16,32 @@ import { CommonModule } from "@angular/common";
 
 export class PageProductosComponent {
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.listarProductos();
   }
-  listaProductos : Producto[] = [];
+  listaProductos: Producto[] = [];
 
   productoService = inject(ProductoService);
 
-  listarProductos(){
+  listarProductos() {
     this.productoService.getProductos().subscribe({
-      next: (productos : Producto[]) =>{
+      next: (productos: Producto[]) => {
         this.listaProductos = productos;
       },
-      error: (e : Error) =>{
+      error: (e: Error) => {
         console.log(e.message);
       }
     })
   }
+
+ordenarPorPrecio(orden: string) {
+  if (orden === 'asc') {
+    this.listaProductos.sort((a, b) => a.precio - b.precio);
+  } else if (orden === 'desc') {
+    this.listaProductos.sort((a, b) => b.precio - a.precio);
+  } else {
+    this.listarProductos();
+  }
+}
 
 }
