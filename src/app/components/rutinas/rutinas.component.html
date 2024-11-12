@@ -2,7 +2,7 @@
   @for (rutina of listaRutinas.slice(0,5); track rutina.id) {
   <div class="rutina">
     <h3 class="titulo-rutina">{{rutina.nombre}}</h3>
-    <button class="precio-rutina">ver detalles</button>
+    <button routerLink="/detalles-rutinas/{{rutina.id}}" class="precio-rutina">ver detalles</button>
     <p class="descripcion-rutina">{{rutina.descripcion}}</p>
     <img [src]="rutina.imagen" class="imagen-rutina" alt="imagen">
   </div>
