@@ -9,6 +9,7 @@ import { ProductosDetailsComponent } from './components/productos-details/produc
 import { RutinasComponent } from './components/rutinas/rutinas.component';
 import path from 'path';
 import { AddRutinasComponent } from './components/add-rutinas/add-rutinas.component';
+import { RutinasDetailsComponent } from './components/rutinas-details/rutinas-details.component';
 
 export const routes: Routes = [
   { path: '', component: InicioSesionComponent },
@@ -17,8 +18,9 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {path:'sobre-nosotros', component: AboutUsComponent},
   {path: 'terminos-y-condiciones', component: PoliticasComponent},
-  {path: 'detalles/:id', component: ProductosDetailsComponent},//cambiar por DETALLES
+  {path: 'detalles/:id', component: ProductosDetailsComponent},
   {path: 'productos', component: PageProductosComponent},
   {path: 'rutinas', component: RutinasComponent},
+  {path: 'detalles-rutinas/:id', component: RutinasDetailsComponent},
   {path: "addRutinas", component: AddRutinasComponent}
 ];

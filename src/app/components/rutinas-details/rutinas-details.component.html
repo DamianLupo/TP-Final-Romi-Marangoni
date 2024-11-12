@@ -1,1 +1,8 @@
-<p>rutinas-details works!</p>
+<button routerLink="/rutinas" class="btn-volver">Volver</button>
+<div class="product-container">
+  <h1>{{rutina.nombre}}</h1>
+    <img [src]="rutina.imagen" alt="imagen">
+    <p>{{rutina.descripcion}}</p>
+    <p>{{rutina.precio}} USD</p>
+    <button (click)="createPaymentPreference()">Comprar</button>
+</div>

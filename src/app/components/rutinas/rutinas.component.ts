@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RutinaInterface } from '../../interface/rutina.interface';
 import { RutinaServiceService } from '../../service/rutina.service.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-rutinas',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './rutinas.component.html',
   styleUrl: './rutinas.component.css'
 })
