@@ -10,7 +10,7 @@
   <div class="grid-product">
 
 
-    @for(producto of listaProductos.slice(0,5); track producto.id){
+    @for(producto of listaProductos; track producto.id){
     <div class="producto">
       <img [src]="producto.imagen" class="imagen-producto" alt="imagen">
       <h2>{{ producto.nombre }}</h2>

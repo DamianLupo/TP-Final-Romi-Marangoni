@@ -45,8 +45,8 @@
                        id="imagen" 
                        accept="image/*"
                        (change)="onFileSelected($event)"
-                       [class.is-invalid]="formrutinas.get('imagen')?.invalid && formrutinas.get('imagen')?.touched">
-                @if(formrutinas.get('imagen')?.invalid && formrutinas.get('imagen')?.touched) {
+                       [class.is-invalid]="formrutinas.controls['imagen'].invalid && formrutinas.controls['imagen'].touched">
+                @if(formrutinas.controls['imagen'].getError("required") && formrutinas.controls['imagen'].touched) {
                     <div class="error-message">
                         <p>La imagen es requerida</p>
                     </div>

@@ -2,6 +2,8 @@ import { RutinaServiceService } from './../../service/rutina.service.service';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { MercadoPagoService } from '../../service/mercado-pago.service';
+import { UsuarioService } from '../../service/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rutinas-details',
@@ -19,18 +21,20 @@ export class RutinasDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
     this.obtenerRutinaId(id);
+    this.verificador=this.usuarioService.isAdmin();
   }
-
+  usuarioService = inject(UsuarioService);
   obtenerRutinaId(id: string | null){
     this.rutinaService.getRutinaid(id).subscribe(rutina => this.rutina = rutina);
   }
-
-  constructor(private mercadoPagoService: MercadoPagoService) {}
+  verificador=false;
+  constructor(private mercadoPagoService: MercadoPagoService,private router: Router) {}
 
   createPaymentPreference() {
     const title = this.rutina.nombre;
     const quantity = 1;
     const unitPrice =  this.rutina.precio;
+    
 
     this.mercadoPagoService.createPreference(title, quantity, unitPrice).subscribe(
       response => {
@@ -43,4 +47,20 @@ export class RutinasDetailsComponent implements OnInit {
       }
     );
   }
+  deleteRutina(){
+    this.rutinaService.deleteRutina(this.rutina.id).subscribe({
+      next: () => {  
+        console.log("Rutina eliminada exitosamente");
+      },
+      error: (e : Error) => {
+        console.log("Error al eliminar la rutina", e);
+      }
+    });
+    this.router.navigate(["/home"]);
+  }
+  editRutina(){
+
+    this.router.navigate([`/editRutina/${this.rutina.id}`], {state: {rutina: this.rutina}});
+  }
+
 }

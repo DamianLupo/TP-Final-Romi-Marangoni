@@ -34,4 +34,7 @@ export class RutinaServiceService {
   {
     return (Number(this.rutinas[this.rutinas.length-1].id!)+1).toString()
   }
+  putRutina(rutina: RutinaInterface, id: number):Observable<RutinaInterface>{
+    return this.http.put<RutinaInterface>(`${this.urlBase}/${id}`, rutina);
+  }
 }

@@ -88,6 +88,15 @@ export class UsuarioService {
   setID(){
     return Number(this.usuarios[this.usuarios.length - 1].id) + 1;
   }
+  isAdmin(): boolean{
+    let verificador = false;
+    if(this.usuarioEnSesion){
+      if(this.usuarioEnSesion.isAdmin){
+        verificador = true;
+      }
+    }
+    return verificador;
+}
 }
 
 

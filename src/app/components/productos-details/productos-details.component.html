@@ -5,4 +5,8 @@
     <p>{{producto.descripcion}}</p>
     <p>{{producto.precio}} USD</p>
     <button (click)="createPaymentPreference()">Comprar</button>
+    @if(verificador){
+      <button (click)="deleteProducto()">Eliminar</button>
+      <button (click)="editProduct()">Editar</button>
+    }
 </div>
