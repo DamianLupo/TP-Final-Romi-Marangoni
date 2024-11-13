@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuStateService } from '../../service/menu-state.service';
@@ -5,18 +6,25 @@ import { UsuarioService } from '../../service/usuario.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit{
-  constructor(private menuStateService: MenuStateService) {}
+  menuStateService = inject(MenuStateService);
   ngOnInit(): void {
     this.isAdmin();
+    this.menuStateService.isOpenPopup$.subscribe(isOpen => {
+      this.isOpen = isOpen;
+    });
   }
-
+  isOpen : boolean = false;
+  popupState = false;
   toggleMenu() {
     this.menuStateService.openMenu();
+  }
+  togglePopup() {
+    this.popupState = !this.popupState;
   }
   usuariosService = inject(UsuarioService);
   verificador=false;
@@ -24,6 +32,12 @@ export class HeaderComponent implements OnInit{
   isLogged = this.usuario !== undefined;
   logout() {
     this.usuariosService.cerrarSesion();
+  }
+  togglePopUpProductsAndRutins(){
+    this.menuStateService.openPopup();
+    console.log("open popup");
+    
+    console.log(this.isOpen);
   }
   isAdmin()
   {

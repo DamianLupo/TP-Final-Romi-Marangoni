@@ -1,3 +1,14 @@
+.add-rutinas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 80vh;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .add-ctn {
     display: flex;
     flex-direction: column;

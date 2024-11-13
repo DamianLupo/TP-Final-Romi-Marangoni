@@ -1,0 +1,16 @@
+<div class="container" [ngClass]="{'open': isOpen}">
+    <div class="pop-up-add" [ngClass]="{'open': isOpen}">
+        <div class="header">
+            <span class="close-btn" (click)="togglePopUp()">✕</span>
+        </div>
+        <div class="pop-up">
+            <h2>Agregar Articulos</h2>   
+            <div class="buttons">
+                <button routerLink="/addProductos" (click)="togglePopUp()">Agregar Producto</button>
+                <button routerLink="/addRutinas" (click)="togglePopUp()">Agregar Rutina</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

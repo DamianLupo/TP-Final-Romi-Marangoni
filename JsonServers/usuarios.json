@@ -98,14 +98,14 @@
     },
     {
       "id": "8",
-      "nombre": "",
-      "apellido": "",
-      "username": "",
+      "nombre": "Romina",
+      "apellido": "Marangoni",
+      "username": "romi_fit",
       "email": "romimarangoni@gmail.com",
       "password": "romifit123",
       "rutinas": [],
       "productos": [],
-      "numDeTelefono": null,
+      "numDeTelefono": 2235433871,
       "isAdmin": true
     }
   ]

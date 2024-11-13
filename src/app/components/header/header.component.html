@@ -9,11 +9,11 @@
     <div class="sign-in-btn">
         @if(verificador)
         {
-            <button class="add-btn">Agregar</button>
+            <button class="add-btn" (click)="togglePopUpProductsAndRutins()">Agregar</button>
         }
         <div class="dropdown">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="user-image">
-            <div class="dropdown-content">
+            <img (click)="togglePopup()" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="user-image">
+            <div class="dropdown-content"  [ngClass]="{'show': popupState}">
                 <a class="modify-btn" (click)="toggleMenu()"><i class="fas fa-cog"></i> Configuración</a>
                 @if(isLogged){
                     <a href="#" class="delete-btn" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
