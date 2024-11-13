@@ -10,6 +10,8 @@ import { RutinasDetailsComponent } from './components/rutinas-details/rutinas-de
 import { RutinasComponent } from './components/rutinas/rutinas.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageProductosComponent } from './pages/page-productos/page-productos/page-productos.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { EditRutinaComponent } from './components/edit-rutina/edit-rutina.component';
 export const routes: Routes = [
   { path: '', component: InicioSesionComponent },
   { path: 'login', component: InicioSesionComponent },
@@ -22,5 +24,7 @@ export const routes: Routes = [
   {path: 'rutinas', component: RutinasComponent},
   {path: 'detalles-rutinas/:id', component: RutinasDetailsComponent},
   {path: "addRutinas", component: AddRutinasComponent},
-  {path: "addProductos", component: AddProductosComponent}
+  {path: "addProductos", component: AddProductosComponent},
+  {path: "editProduct/:id", component: EditProductComponent},
+  {path: "editRutina/:id", component: EditRutinaComponent}
 ];

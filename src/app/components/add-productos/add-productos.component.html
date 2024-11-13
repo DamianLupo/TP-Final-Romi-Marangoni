@@ -1,55 +1,80 @@
 <div class="add-productos">
-    <form [formGroup]="formulario" (ngSubmit)="addProducto()">
-        <label for=""> Producto: </label>
-        <label for=""> Nombre </label>
-        <input type="text" formControlName="nombre">
-        @if (formulario.controls['nombre'].getError('required')) {
-            <p>El nombre es requerido</p>
-        }
-    
-        @if (formulario.controls['nombre'].getError('minlength')) {
-            <p>El nombre debe tener al menos 3 caracteres</p>
-        }
-    
-        <label for=""> Precio: </label>
-    
-        <input type="number" formControlName="precio">
-        @if (formulario.controls['precio'].getError('required')) {
-            <p>El precio es requerido</p>
-        }
-    
-        <label for=""> Descripcion: </label>
-        <input type="text" formControlName="descripcion">
-        @if (formulario.controls['descripcion'].getError('required')) {
-            <p>La descripcion es requerida</p>
-        }
-    
-        @if (formulario.controls['descripcion'].getError('minlength')) {
-            <p>La descripcion debe tener al menos 10 caracteres</p>
-        }
-    
-        <div class="input-group">
-            <label for="imagen">Imagen de la rutina:</label>
-            <input type="file" 
-                   id="imagen" 
-                   accept="image/*"
-                   (change)="onFileSelected($event)"
-                   [class.is-invalid]="formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched">
-            @if(formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched) {
-                <div class="error-message">
-                    <p>La imagen es requerida</p>
+    <div class="add-ctn">
+        <div class="header-productos">
+            <p>Agregar producto</p>
+        </div>
+        
+        <form [formGroup]="formulario" (ngSubmit)="addProducto()">
+            <div class="input-group">
+                <label for="nombre">Inserte el nombre</label>
+                <input type="text" id="nombre" formControlName="nombre" class="formGroup">
+                @if(formulario.controls["nombre"].getError("required") && formulario.controls["nombre"].touched) {
+                    <div class="error-message">
+                        <p>Campo requerido</p>
+                    </div>
+                }
+                @if(formulario.controls["nombre"].getError("minlength")) {
+                    <div class="error-message">
+                        <p>El nombre debe tener al menos 3 caracteres</p>
+                    </div>
+                }
+            </div>
+
+            <div class="input-group">
+                <label for="precio">Ingrese el precio</label>
+                <input type="number" id="precio" formControlName="precio" class="formGroup">
+                @if(formulario.controls["precio"].getError("required") && formulario.controls["precio"].touched) {
+                    <div class="error-message">
+                        <p>Campo requerido</p>
+                    </div>
+                }
+                @if(formulario.controls["precio"].getError("min")&&formulario.controls["precio"].touched)
+                {
+                    <div class="error-message">
+                        <p>El precio debe ser mayor a 0</p>
+                    </div>
+                }
+            </div>
+
+            <div class="input-group">
+                <label for="descripcion">Ingrese una descripción del producto</label>
+                <input type="text" id="descripcion" formControlName="descripcion" class="formGroup">
+                @if(formulario.controls["descripcion"].getError("required") && formulario.controls["descripcion"].touched) {
+                    <div class="error-message">
+                        <p>Campo requerido</p>
+                    </div>
+                }
+                @if(formulario.controls["descripcion"].getError("minlength")) {
+                    <div class="error-message">
+                        <p>La descripción debe tener al menos 10 caracteres</p>
+                    </div>
+                }
+            </div>
+
+            <div class="input-group">
+                <label for="imagen">Imagen del producto:</label>
+                <input type="file" 
+                       id="imagen" 
+                       accept="image/*"
+                       (change)="onFileSelected($event)"
+                       class="formGroup"
+                       [class.is-invalid]="formulario.controls['imagen'].invalid && formulario.controls['imagen'].touched">
+                @if(formulario.controls['imagen'].getError("required") && formulario.controls['imagen'].touched) {
+                    <div class="error-message">
+                        <p>La imagen es requerida</p>
+                    </div>
+                }
+            </div>
+
+            @if(formulario.get('imagen')?.value) {
+                <div class="preview-container">
+                    <img [src]="formulario.get('imagen')?.value" 
+                         alt="Vista previa" 
+                         class="preview-image">
                 </div>
             }
-        </div>
-    
-        @if(formulario.get('imagen')?.value) {
-            <div class="preview-container">
-                <img [src]="formulario.get('imagen')?.value" 
-                     alt="Vista previa" 
-                     class="preview-image">
-            </div>
-        }
-    
-        <button>Agregar Producto </button>    
-    </form>
+
+            <button type="submit" class="add-btn">Agregar Producto</button>
+        </form>
+    </div>
 </div>

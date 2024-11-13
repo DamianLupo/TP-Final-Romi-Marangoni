@@ -1,0 +1,62 @@
+<form [formGroup]="editform">
+    <div class="input-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" id="nombre" class="formGroup">
+    </div>
+    @if(editform.controls['nombre'].getError("required") && editform.controls['nombre'].touched) {
+        <div class="error-message">
+            <p>El nombre es requerido</p>
+        </div>
+    }
+    <div class="input-group">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" formControlName="descripcion" id="descripcion" class="formGroup">
+    </div>
+    @if(editform.controls['descripcion'].getError("required") && editform.controls['descripcion'].touched) {
+        <div class="error-message">
+            <p>La descripcion es requerida</p>
+        </div>
+    }
+    <div class="input-group">
+        <label for="precio">Precio</label>
+        <input type="number" formControlName="precio" id="precio" class="formGroup">
+    </div>
+    @if(editform.controls['precio'].getError("required") && editform.controls['precio'].touched) {
+        <div class="error-message">
+            <p>El precio es requerido</p>
+        </div>
+    }
+    <div class="input-group">
+        <label for="urlDescarga">Url Descarga</label>
+        <input type="text" formControlName="urlDescarga" id="urlDescarga" class="formGroup">
+    </div>
+    @if(editform.controls['urlDescarga'].getError("required") && editform.controls['urlDescarga'].touched) {
+        <div class="error-message">
+            <p>La url de descarga es requerida</p>
+        </div>
+    }
+    <div class="input-group">
+        <label for="imagen">Imagen</label>
+        <label for="imagen">Imagen del producto:</label>
+            <input type="file" 
+                   id="imagen" 
+                   accept="image/*"
+                   (change)="onFileSelected($event)"
+                   class="formGroup"
+                   [class.is-invalid]="editform.controls['imagen'].invalid && editform.controls['imagen'].touched">
+            @if(editform.controls['imagen'].getError("required") && editform.controls['imagen'].touched) {
+                <div class="error-message">
+                    <p>La imagen es requerida</p>
+                </div>
+            }
+    </div>
+    @if(editform.get('imagen')?.value) {
+        <div class="preview-container">
+            <img [src]="editform.get('imagen')?.value" 
+                 alt="Vista previa" 
+                 class="preview-image">
+        </div>
+    }
+    <button (click)="editRutina()">Editar rutina</button>
+
+</form>

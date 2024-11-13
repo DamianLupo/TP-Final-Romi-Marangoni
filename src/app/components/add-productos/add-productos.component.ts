@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Producto } from '../../interface/producto.interface';
 import { ProductoService } from '../../service/producto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-productos',
@@ -12,16 +13,27 @@ import { ProductoService } from '../../service/producto.service';
   styleUrl: './add-productos.component.css'
 })
 
-export class AddProductosComponent {
-  emitirProducto : EventEmitter<Producto> = new EventEmitter();
-
+export class AddProductosComponent implements OnInit {
+  ngOnInit(): void {
+    
+    this.productoService.getProductos().subscribe({
+      next: ()=>{
+        console.log("Productos bajados exitosamente");
+      },
+      error: (e : Error) =>{
+        console.log("Error al bajar los productos", e.message);
+      }
+    });
+  }
+  constructor(private router: Router ){}
+    
   fb = inject(FormBuilder);
   productoService = inject(ProductoService);
 
   formulario = this.fb.nonNullable.group({
     id: [""],
     nombre: ['', [Validators.required, Validators.minLength(3)]],
-    precio: [0, [Validators.required]],
+    precio: [0, [Validators.required,Validators.min(1)]],
     descripcion: ['', [Validators.required, Validators.minLength(10)]],
     imagen: ['', [Validators.required]]
   })
@@ -38,24 +50,20 @@ export class AddProductosComponent {
     }
   }
 
-  addProducto(){
-    if(this.formulario.invalid) return ;
+  addProducto() {
+    if(this.formulario.invalid) return;
 
     const producto = this.formulario.getRawValue();
-    this.addProductoDb(producto);
-    this.emitirProducto.emit(producto);
-  }
-
-  addProductoDb(producto: Producto){
+    producto.id = this.productoService.setID();
     this.productoService.postProducto(producto).subscribe({
-      next: (producto : Producto) =>{
-        console.log(producto);
-        alert("Producto agregado correctamente");
+      next: () =>{
+        console.log("Producto agregado correctamente");
       },
       error: (e : Error) =>{
-        console.log(e.message);
+        console.log("Error al agregar el producto", e.message);
       }
     })
+    this.router.navigate(['/home']);
   }
 
 }
