@@ -75,6 +75,11 @@ export class UsuarioService {
       };
     });
   }
+
+  actualizarUsuario(usuario: Usuario): Observable<any> {
+    return this.http.put(`/api/usuarios/${usuario.id}`, usuario);
+  }
+
   cerrarSesion(): void {
     this.usuarioEnSesion = undefined;
     localStorage.removeItem('usuarioEnSesion');
