@@ -18,16 +18,17 @@ export class ProductosDetailsComponent implements OnInit {
   routes = inject(ActivatedRoute);
   productoService = inject(ProductoService);
   usuarioService = inject(UsuarioService);  
+
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
     this.obtenerProducto(id);
     this.verificador=this.usuarioService.isAdmin();
   }
   verificador=false;
+
   obtenerProducto(id: string | null){
     this.productoService.getProducto(id).subscribe(producto => this.producto = producto);
   }
-  
 
   constructor(private mercadoPagoService: MercadoPagoService, private router: Router) {}
 
@@ -35,8 +36,9 @@ export class ProductosDetailsComponent implements OnInit {
     const title = this.producto.nombre;
     const quantity = 1;
     const unitPrice =  this.producto.precio;
+    const productId = this.producto.id;
 
-    this.mercadoPagoService.createPreference(title, quantity, unitPrice).subscribe(
+    this.mercadoPagoService.createPreference(title, quantity, unitPrice, productId).subscribe(
       response => {
         console.log('ID de la preferencia:', response.id);
         window.location.href = response.init_point; 
@@ -58,6 +60,7 @@ export class ProductosDetailsComponent implements OnInit {
     this.router.navigate(['/home']);
     
   }
+  
   editProduct()
   {
     this.router.navigate([`/editProduct/${this.producto.id}`], {state: {producto: this.producto}});
