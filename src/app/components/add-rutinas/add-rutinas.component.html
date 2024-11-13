@@ -1,66 +1,69 @@
-<div class="add-ctn">
-    <div class="header-rutinas">
-        <p>Agregar rutina</p>
+<div class="add-rutinas">
+    <div class="add-ctn">
+        <div class="header-rutinas">
+            <p>Agregar rutina</p>
+        </div>
+        
+        <form [formGroup]="formrutinas" (ngSubmit)="addRutina()">
+            <div class="input-group">
+                <label for="nombre">Inserte el nombre</label>
+                <input type="text" id="nombre" formControlName="nombre" class="formGroup">
+                @if(formrutinas.controls["nombre"].getError("required") && formrutinas.controls["nombre"].touched) {
+                    <div class="error-message">
+                        <p>Campo requerido</p>
+                    </div>
+                }
+            </div>
+    
+            <div class="input-group">
+                <label for="descripcion">Ingrese una descripcion de la rutina</label>
+                <input type="text" id="descripcion" formControlName="descripcion" class="formGroup">
+                @if(formrutinas.controls["descripcion"].getError("required") && formrutinas.controls["descripcion"].touched) {
+                    <div class="error-message">
+                        <p>Campo requerido</p>
+                    </div>
+                }
+            </div>
+    
+            <div class="input-group">
+                <label for="precio">Ingrese el precio</label>
+                <input type="number" id="precio" formControlName="precio" class="formGroup">
+                @if(formrutinas.controls["precio"].getError("required") && formrutinas.controls["precio"].touched) {
+                    <div class="error-message">
+                        <p>Campo requerido</p>
+                    </div>
+                } @else if(formrutinas.controls["precio"].getError("min") && formrutinas.controls["precio"].touched) {
+                    <div class="error-message">
+                        <p>El precio de la rutina no puede ser menor a 1</p>
+                    </div>
+                }
+            </div>
+    
+            <div class="input-group">
+                <label for="imagen">Imagen de la rutina:</label>
+                <input type="file" 
+                       id="imagen" 
+                       accept="image/*"
+                       (change)="onFileSelected($event)"
+                       [class.is-invalid]="formrutinas.get('imagen')?.invalid && formrutinas.get('imagen')?.touched">
+                @if(formrutinas.get('imagen')?.invalid && formrutinas.get('imagen')?.touched) {
+                    <div class="error-message">
+                        <p>La imagen es requerida</p>
+                    </div>
+                }
+            </div>
+    
+            @if(formrutinas.get('imagen')?.value) {
+                <div class="preview-container">
+                    <img [src]="formrutinas.get('imagen')?.value" 
+                         alt="Vista previa" 
+                         class="preview-image">
+                </div>
+            }
+    
+            <button type="submit" class="add-btn">Añadir rutina</button>
+        </form>
     </div>
     
-    <form [formGroup]="formrutinas" (ngSubmit)="addRutina()">
-        <div class="input-group">
-            <label for="nombre">Inserte el nombre</label>
-            <input type="text" id="nombre" formControlName="nombre" class="formGroup">
-            @if(formrutinas.controls["nombre"].getError("required") && formrutinas.controls["nombre"].touched) {
-                <div class="error-message">
-                    <p>Campo requerido</p>
-                </div>
-            }
-        </div>
-
-        <div class="input-group">
-            <label for="descripcion">Ingrese una descripcion de la rutina</label>
-            <input type="text" id="descripcion" formControlName="descripcion" class="formGroup">
-            @if(formrutinas.controls["descripcion"].getError("required") && formrutinas.controls["descripcion"].touched) {
-                <div class="error-message">
-                    <p>Campo requerido</p>
-                </div>
-            }
-        </div>
-
-        <div class="input-group">
-            <label for="precio">Ingrese el precio</label>
-            <input type="number" id="precio" formControlName="precio" class="formGroup">
-            @if(formrutinas.controls["precio"].getError("required") && formrutinas.controls["precio"].touched) {
-                <div class="error-message">
-                    <p>Campo requerido</p>
-                </div>
-            } @else if(formrutinas.controls["precio"].getError("min") && formrutinas.controls["precio"].touched) {
-                <div class="error-message">
-                    <p>El precio de la rutina no puede ser menor a 1</p>
-                </div>
-            }
-        </div>
-
-        <div class="input-group">
-            <label for="imagen">Imagen de la rutina:</label>
-            <input type="file" 
-                   id="imagen" 
-                   accept="image/*"
-                   (change)="onFileSelected($event)"
-                   [class.is-invalid]="formrutinas.get('imagen')?.invalid && formrutinas.get('imagen')?.touched">
-            @if(formrutinas.get('imagen')?.invalid && formrutinas.get('imagen')?.touched) {
-                <div class="error-message">
-                    <p>La imagen es requerida</p>
-                </div>
-            }
-        </div>
-
-        @if(formrutinas.get('imagen')?.value) {
-            <div class="preview-container">
-                <img [src]="formrutinas.get('imagen')?.value" 
-                     alt="Vista previa" 
-                     class="preview-image">
-            </div>
-        }
-
-        <button type="submit" class="add-btn">Añadir rutina</button>
-    </form>
+    
 </div>
-

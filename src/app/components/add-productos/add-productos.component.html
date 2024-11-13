@@ -1,53 +1,55 @@
-<form [formGroup]="formulario" (ngSubmit)="addProducto()">
-    <label for=""> Producto: </label>
-    <label for=""> Nombre </label>
-    <input type="text" formControlName="nombre">
-    @if (formulario.controls['nombre'].getError('required')) {
-        <p>El nombre es requerido</p>
-    }
-
-    @if (formulario.controls['nombre'].getError('minlength')) {
-        <p>El nombre debe tener al menos 3 caracteres</p>
-    }
-
-    <label for=""> Precio: </label>
-
-    <input type="number" formControlName="precio">
-    @if (formulario.controls['precio'].getError('required')) {
-        <p>El precio es requerido</p>
-    }
-
-    <label for=""> Descripcion: </label>
-    <input type="text" formControlName="descripcion">
-    @if (formulario.controls['descripcion'].getError('required')) {
-        <p>La descripcion es requerida</p>
-    }
-
-    @if (formulario.controls['descripcion'].getError('minlength')) {
-        <p>La descripcion debe tener al menos 10 caracteres</p>
-    }
-
-    <div class="input-group">
-        <label for="imagen">Imagen de la rutina:</label>
-        <input type="file" 
-               id="imagen" 
-               accept="image/*"
-               (change)="onFileSelected($event)"
-               [class.is-invalid]="formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched">
-        @if(formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched) {
-            <div class="error-message">
-                <p>La imagen es requerida</p>
+<div class="add-productos">
+    <form [formGroup]="formulario" (ngSubmit)="addProducto()">
+        <label for=""> Producto: </label>
+        <label for=""> Nombre </label>
+        <input type="text" formControlName="nombre">
+        @if (formulario.controls['nombre'].getError('required')) {
+            <p>El nombre es requerido</p>
+        }
+    
+        @if (formulario.controls['nombre'].getError('minlength')) {
+            <p>El nombre debe tener al menos 3 caracteres</p>
+        }
+    
+        <label for=""> Precio: </label>
+    
+        <input type="number" formControlName="precio">
+        @if (formulario.controls['precio'].getError('required')) {
+            <p>El precio es requerido</p>
+        }
+    
+        <label for=""> Descripcion: </label>
+        <input type="text" formControlName="descripcion">
+        @if (formulario.controls['descripcion'].getError('required')) {
+            <p>La descripcion es requerida</p>
+        }
+    
+        @if (formulario.controls['descripcion'].getError('minlength')) {
+            <p>La descripcion debe tener al menos 10 caracteres</p>
+        }
+    
+        <div class="input-group">
+            <label for="imagen">Imagen de la rutina:</label>
+            <input type="file" 
+                   id="imagen" 
+                   accept="image/*"
+                   (change)="onFileSelected($event)"
+                   [class.is-invalid]="formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched">
+            @if(formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched) {
+                <div class="error-message">
+                    <p>La imagen es requerida</p>
+                </div>
+            }
+        </div>
+    
+        @if(formulario.get('imagen')?.value) {
+            <div class="preview-container">
+                <img [src]="formulario.get('imagen')?.value" 
+                     alt="Vista previa" 
+                     class="preview-image">
             </div>
         }
-    </div>
-
-    @if(formulario.get('imagen')?.value) {
-        <div class="preview-container">
-            <img [src]="formulario.get('imagen')?.value" 
-                 alt="Vista previa" 
-                 class="preview-image">
-        </div>
-    }
-
-    <button>Agregar Producto </button>    
-</form>
+    
+        <button>Agregar Producto </button>    
+    </form>
+</div>
