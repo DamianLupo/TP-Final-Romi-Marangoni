@@ -41,7 +41,7 @@ export class RutinasDetailsComponent implements OnInit {
     const quantity = 1;
     const unitPrice =  this.rutina.precio;
     const id = this.rutina.id;
-    
+
 
     this.mercadoPagoService.createPreference(title, quantity, unitPrice, id).subscribe(
       response => {

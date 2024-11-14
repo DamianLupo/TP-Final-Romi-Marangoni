@@ -6,6 +6,13 @@
     <option value="asc">Menor a mayor precio</option>
     <option value="desc">Mayor a menor precio</option>
 </select>
+<div class="filtros">
+  <input type="number" #precioMin placeholder="Precio mínimo">
+  <input type="number" #precioMax placeholder="Precio máximo">
+  <button (click)="verificarCamposVacios(precioMin.value ? +precioMin.value : 0, precioMax.value ? +precioMax.value : 0)">
+    Filtrar por precio
+  </button>
+</div>
 
   <div class="grid-product">
 

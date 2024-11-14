@@ -44,4 +44,29 @@ ordenarPorPrecio(orden: string) {
   }
 }
 
+filtrarPorRangoPrecio(precioMin: number, precioMax: number) {
+  if (precioMin >= 0 && precioMax >= precioMin) {
+    this.productoService.getProductos().subscribe({
+      next: (productos: Producto[]) => {
+        this.listaProductos = productos.filter(producto =>
+          producto.precio >= precioMin && producto.precio <= precioMax
+        );
+      },
+      error: (e: Error) => {
+        console.log(e.message);
+      }
+    });
+  } else {
+    this.listarProductos();
+  }
+}
+verificarCamposVacios(precioMin: number, precioMax: number) {
+  if (!precioMin && !precioMax) {
+    this.listarProductos();
+  } else {
+    this.filtrarPorRangoPrecio(precioMin, precioMax);
+  }
+}
+
+
 }
