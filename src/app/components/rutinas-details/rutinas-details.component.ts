@@ -34,9 +34,9 @@ export class RutinasDetailsComponent implements OnInit {
     const title = this.rutina.nombre;
     const quantity = 1;
     const unitPrice =  this.rutina.precio;
-    
 
-    this.mercadoPagoService.createPreference(title, quantity, unitPrice).subscribe(
+
+    this.mercadoPagoService.createPreference(title, quantity, unitPrice, this.rutina.id).subscribe(
       response => {
         console.log('ID de la preferencia:', response.id);
         window.location.href = response.init_point;
@@ -49,7 +49,7 @@ export class RutinasDetailsComponent implements OnInit {
   }
   deleteRutina(){
     this.rutinaService.deleteRutina(this.rutina.id).subscribe({
-      next: () => {  
+      next: () => {
         console.log("Rutina eliminada exitosamente");
       },
       error: (e : Error) => {
