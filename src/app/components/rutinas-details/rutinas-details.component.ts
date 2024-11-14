@@ -1,9 +1,8 @@
-import { RutinaServiceService } from './../../service/rutina.service.service';
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { UsuarioService } from '../../service/usuario.service';
-import { Router } from '@angular/router';
+import { RutinaServiceService } from './../../service/rutina.service.service';
 
 @Component({
   selector: 'app-rutinas-details',
@@ -34,9 +33,10 @@ export class RutinasDetailsComponent implements OnInit {
     const title = this.rutina.nombre;
     const quantity = 1;
     const unitPrice =  this.rutina.precio;
+    const id = this.rutina.id;
     
 
-    this.mercadoPagoService.createPreference(title, quantity, unitPrice).subscribe(
+    this.mercadoPagoService.createPreference(title, quantity, unitPrice, id).subscribe(
       response => {
         console.log('ID de la preferencia:', response.id);
         window.location.href = response.init_point;
