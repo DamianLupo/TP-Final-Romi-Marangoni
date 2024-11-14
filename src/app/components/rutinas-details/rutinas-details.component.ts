@@ -49,7 +49,7 @@ export class RutinasDetailsComponent implements OnInit {
   }
   deleteRutina(){
     this.rutinaService.deleteRutina(this.rutina.id).subscribe({
-      next: () => {  
+      next: () => {
         console.log("Rutina eliminada exitosamente");
       },
       error: (e : Error) => {
