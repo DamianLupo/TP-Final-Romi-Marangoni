@@ -1,4 +1,27 @@
-@for (item of usuario.productos; track $index) {
-    <p>{{item.nombre}}</p>
-    <p>{{item.precio}}</p>
-}
+<div class="historial-container">
+    @if(usuario)
+    {
+        <h1>Mi Historial de Productos</h1>
+    
+    @if (usuario.productos && usuario.productos.length > 0) {
+      @for (item of usuario.productos; track $index) {
+        <div class="historial-item">
+          <p class="nombre">Nombre del producto: {{item.nombre}}</p>
+          <p class="precio">Precio: ${{item.precio}}</p>
+          <p class="descripcion">Descripcion: {{item.descripcion}}</p>
+          <img [src]="item.imagen" alt="{{item.nombre}}" class="historial-imagen">
+          <button (click)="seeDetails(item.id)">Ver detalles</button>
+        </div>
+      }
+    } @else {
+      <div class="empty-historial">
+        <p>No tienes productos en tu historial de compras</p>
+      </div>
+    }
+    }
+    @else {
+        <div class="empty-user">
+            <h1>No hay un usuario en sesion</h1>
+        </div>
+    }
+  </div>

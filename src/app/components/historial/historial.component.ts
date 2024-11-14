@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { UsuarioService } from '../../service/usuario.service';
 import { Producto } from '../../interface/producto.interface';
 import { ProductoService } from '../../service/producto.service';
+
 
 @Component({
   selector: 'app-historial',
@@ -17,8 +18,9 @@ export class HistorialComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private mpService: MercadoPagoService,
+    private router: Router
   ) {}
-
+  comprado: boolean = true;
   usuarioService = inject(UsuarioService);
   productoService = inject(ProductoService);
   producto !: Producto;
@@ -63,5 +65,10 @@ export class HistorialComponent implements OnInit {
         });
       });
     }
+  }
+  seeDetails(id: string | null) {
+
+    console.log(this.usuario.productos);
+    this.router.navigate([`/detalles/${id}`],{state:{comprado: this.comprado}});
   }
 }

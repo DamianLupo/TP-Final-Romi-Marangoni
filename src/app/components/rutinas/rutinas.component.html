@@ -1,10 +1,25 @@
-<div class="grid-rutinas">
-  @for (rutina of listaRutinas.slice(0,5); track rutina.id) {
-  <div class="rutina">
-    <h3 class="titulo-rutina">{{rutina.nombre}}</h3>
-    <button routerLink="/detalles-rutinas/{{rutina.id}}" class="precio-rutina">ver detalles</button>
-    <p class="descripcion-rutina">{{rutina.descripcion}}</p>
-    <img [src]="rutina.imagen" class="imagen-rutina" alt="imagen">
+<div class="rutinas-general">
+  <div class="filtros-container">
+    <select #ordenSelect (change)="ordenarPorPrecio(ordenSelect.value)">
+      <option value="">Selecciona una opción</option>
+      <option value="asc">Menor a mayor precio</option>
+      <option value="desc">Mayor a menor precio</option>
+    </select>
+    <div class="filtros">
+      <input type="number" #precioMin placeholder="Precio mínimo">
+      <input type="number" #precioMax placeholder="Precio máximo">
+      <button (click)="verificarCamposVacios(precioMin.value ? +precioMin.value : 0, precioMax.value ? +precioMax.value : 0)">Filtrar por precio</button>
+    </div>
   </div>
-  }
+
+  <div class="grid-rutinas">
+    @for (rutina of listaRutinas; track rutina.id) {
+    <div class="rutina">
+      <h3 class="titulo-rutina">{{rutina.nombre}}</h3>
+      <img [src]="rutina.imagen" class="imagen-rutina" alt="imagen">
+      <p class="descripcion-rutina">Precio: ${{rutina.precio}}</p>
+      <button routerLink="/detalles-rutinas/{{rutina.id}}" class="precio-rutina">ver detalles</button>
+    </div>
+    }
+  </div>
 </div>

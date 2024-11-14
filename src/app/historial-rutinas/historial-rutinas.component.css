@@ -1,0 +1,132 @@
+.historial-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: #000000;
+    text-align: center;
+  }
+  
+  .historial-container h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  .historial-imagen {
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+  }
+  
+  .historial-imagen:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  .historial-item {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .historial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .historial-item p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .historial-item p:first-child {
+    font-weight: 600;
+    color: #000000;
+    font-size: 22px;
+  }
+  
+  .historial-item p:nth-child(2) {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+  
+  .empty-historial, .empty-user {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+  }
+  
+  .empty-historial p, .empty-user h1 {
+    font-size: 24px;
+    color: #666;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .empty-user {
+    margin-top: 100px;
+    background: rgba(255, 0, 0, 0.1);
+  }
+  
+  .empty-user h1 {
+    color: #ff4444;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  @media (max-width: 850px) {
+    .historial-container {
+      margin: 20px;
+      padding: 20px;
+    }
+    
+    .historial-container h1 {
+      font-size: 24px;
+    }
+    
+    .historial-item p {
+      font-size: 16px;
+    }
+    
+    .empty-historial p, .empty-user h1 {
+      font-size: 20px;
+    }
+  
+    .empty-historial, .empty-user {
+      margin: 20px;
+      padding: 20px;
+    }
+  }
+  button {
+    background-color: #000;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, #000, #333);
+  }

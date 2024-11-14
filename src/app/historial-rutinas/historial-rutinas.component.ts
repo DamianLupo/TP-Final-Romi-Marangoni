@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MercadoPagoService } from '../service/mercado-pago.service';
 import { RutinaServiceService } from '../service/rutina.service.service';
 import { UsuarioService } from '../service/usuario.service';
@@ -17,8 +17,9 @@ export class HistorialRutinasComponent {
   constructor(
     private route: ActivatedRoute,
     private mpService: MercadoPagoService,
+    private router: Router
   ) {}
-
+  comprado: boolean = true;
   usuarioService = inject(UsuarioService);
   rutinaService = inject(RutinaServiceService);
   rutina !: RutinaInterface;
@@ -64,5 +65,7 @@ export class HistorialRutinasComponent {
       });
     }
   }
-
+  seeDetails(id: string | null) {
+    this.router.navigate([`/detalles-rutinas/${id}`],{state:{comprado: this.comprado}});
+  }
 }

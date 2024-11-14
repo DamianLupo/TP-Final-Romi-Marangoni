@@ -12,6 +12,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageProductosComponent } from './pages/page-productos/page-productos/page-productos.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { EditRutinaComponent } from './components/edit-rutina/edit-rutina.component';
+import { HistorialComponent } from './components/historial/historial.component';
+import { HistorialRutinasComponent } from './historial-rutinas/historial-rutinas.component';
+import { FindProductsComponent } from './components/find-products/find-products.component';
 export const routes: Routes = [
   { path: '', component: InicioSesionComponent },
   { path: 'login', component: InicioSesionComponent },
@@ -26,5 +29,8 @@ export const routes: Routes = [
   {path: "addRutinas", component: AddRutinasComponent},
   {path: "addProductos", component: AddProductosComponent},
   {path: "editProduct/:id", component: EditProductComponent},
-  {path: "editRutina/:id", component: EditRutinaComponent}
+  {path: "editRutina/:id", component: EditRutinaComponent},
+  {path: "misProductos", component: HistorialComponent},
+  {path: "misRutinas", component: HistorialRutinasComponent},
+  {path: "searchProducts", component: FindProductsComponent}
 ];
