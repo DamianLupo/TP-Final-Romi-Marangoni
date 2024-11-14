@@ -6,7 +6,9 @@
     <p>{{rutina.precio}} USD</p>
     <button (click)="createPaymentPreference()">Comprar</button>
     @if(verificador){
-      <button (click)="deleteRutina()">Eliminar</button>
-      <button (click)="editRutina()">Editar</button>
+      <button (click)="type='eliminar'; togglePopUp()">Eliminar</button>
+      <button (click)="type='editar'; togglePopUp()">Editar</button>
     }
+    
 </div>
+<app-pop-up-warning [type]="type" (confirm)="confirmAction($event)"></app-pop-up-warning>

@@ -3,8 +3,14 @@
     <ul class="nav-links">
         <!-- <li><a href="http://localhost:4200/menu"><i class="fas fa-cog"></i> Configuración</a></li> -->
         <li><a routerLink="/home">Home</a></li>
-        <li><a href="#">Explora productos y rutinas</a></li>
-        <li><a href="#">Sign Up</a></li>
+        <li><a routerLink="/productos">Productos</a></li>
+        <li><a routerLink="/rutinas">Rutinas</a></li>
+        @if(isLogged){
+            <li><a href="#" class="delete-btn" (click)="logout()">Cerrar sesión</a></li>
+        }
+        @else{
+            <li><a routerLink="/login" class="login-btn"> Iniciar sesión</a></li>
+        }
     </ul>
     <div class="sign-in-btn">
         @if(verificador)
@@ -14,13 +20,15 @@
         <div class="dropdown">
             <img (click)="togglePopup()" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="user-image">
             <div class="dropdown-content"  [ngClass]="{'show': popupState}">
-                <a class="modify-btn" (click)="toggleMenu()"><i class="fas fa-cog"></i> Configuración</a>
+                <a class="modify-btn" (click)="toggleMenu(); togglePopup()"><i class="fas fa-cog"></i> Configuración</a>
                 @if(isLogged){
-                    <a href="#" class="delete-btn" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                    <a href="#" class="delete-btn" (click)="logout(); togglePopup()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                 }
                 @else{
                     <a routerLink="/login" class="login-btn"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
                 }
+                <a routerLink="/productos" (click)="togglePopup()">Mis productos</a>
+                <a routerLink="/rutinas" (click)="togglePopup()">Mis rutinas</a>
             </div>
         </div>
     </div>

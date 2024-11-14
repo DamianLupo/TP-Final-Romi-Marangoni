@@ -7,20 +7,33 @@
     align-items: center; 
     border-radius: 30px;
     background-color: #f8f9fa; 
-    padding: 10px; 
-}
-.navbar-home > div {
-    display: flex;
-    gap: 20px; 
+    gap: 20px;
+    padding: 5px;
 }
 
-.navbar-home a {
+.navbar-home div a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    padding: 8px 16px;
+    width: 20px;
+    height: 20px;
 }
 
-.navbar-home a:hover {
+.navbar-home div a:hover {
     color: #007bff; 
+}
+.social-icons{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.social-icon-link{
+    width: 20px;
+    height: 20px;
+}
+
+.social-icon{
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
 }

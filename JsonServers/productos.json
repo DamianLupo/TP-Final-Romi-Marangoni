@@ -15,13 +15,6 @@
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "4",
-      "nombre": "Mancuerna",
-      "precio": 2700,
-      "descripcion": "Hola234845",
-      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
-    },
-    {
       "id": "5",
       "nombre": "Mancuernas",
       "precio": 8760,
@@ -37,9 +30,51 @@
     },
     {
       "id": "7",
-      "nombre": "Mancuernas",
-      "precio": 250,
-      "descripcion": "De entre 2.5kg hasta 40kg",
+      "nombre": "Mancuerna",
+      "precio": 10000,
+      "descripcion": "Hola234845",
+      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
+    },
+    {
+      "id": "9",
+      "nombre": "Mancuerna",
+      "precio": 10000,
+      "descripcion": "Hola234845",
+      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
+    },
+    {
+      "id": "10",
+      "nombre": "Mancuerna",
+      "precio": 10000,
+      "descripcion": "Hola234845",
+      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
+    },
+    {
+      "id": "11",
+      "nombre": "Mancuerna",
+      "precio": 10000,
+      "descripcion": "Hola234845",
+      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
+    },
+    {
+      "id": "12",
+      "nombre": "Mancuerna",
+      "precio": 10000,
+      "descripcion": "Hola234845",
+      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
+    },
+    {
+      "id": "13",
+      "nombre": "Mancuerna",
+      "precio": 10000,
+      "descripcion": "Hola234845",
+      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
+    },
+    {
+      "id": "14",
+      "nombre": "Mancuerna",
+      "precio": 10000,
+      "descripcion": "Hola234845",
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     }
   ]
