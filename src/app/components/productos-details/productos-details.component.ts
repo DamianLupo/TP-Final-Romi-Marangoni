@@ -19,7 +19,7 @@ export class ProductosDetailsComponent implements OnInit {
   type: string = '';
   routes = inject(ActivatedRoute);
   productoService = inject(ProductoService);
-  usuarioService = inject(UsuarioService);  
+  usuarioService = inject(UsuarioService);
   closeWarning = inject(MenuStateService);
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
@@ -46,7 +46,7 @@ export class ProductosDetailsComponent implements OnInit {
     this.mercadoPagoService.createPreference(title, quantity, unitPrice, productId).subscribe(
       response => {
         console.log('ID de la preferencia:', response.id);
-        window.location.href = response.init_point; 
+        window.location.href = response.init_point;
       },
       error => {
         console.error('Error al crear la preferencia', error);
@@ -63,9 +63,9 @@ export class ProductosDetailsComponent implements OnInit {
       }
     });
     this.router.navigate(['/home']);
-    
+
   }
-  
+
   editProduct()
   {
     this.router.navigate([`/editProduct/${this.producto.id}`], {state: {producto: this.producto}});
@@ -89,4 +89,5 @@ export class ProductosDetailsComponent implements OnInit {
     this.closeWarning.openWarning();
   }
 
+  
 }
