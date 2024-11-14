@@ -36,13 +36,6 @@
       "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
     },
     {
-      "id": "8",
-      "nombre": "Mancuerna",
-      "precio": 10000,
-      "descripcion": "Hola234845",
-      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
-    },
-    {
       "id": "9",
       "nombre": "Mancuerna",
       "precio": 10000,
@@ -79,13 +72,6 @@
     },
     {
       "id": "14",
-      "nombre": "Mancuerna",
-      "precio": 10000,
-      "descripcion": "Hola234845",
-      "imagen": "https://images-eu.ssl-images-amazon.com/images/I/51zCLEYM-5L._SY200_.jpg"
-    },
-    {
-      "id": "15",
       "nombre": "Mancuerna",
       "precio": 10000,
       "descripcion": "Hola234845",

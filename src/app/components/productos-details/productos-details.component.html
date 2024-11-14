@@ -9,8 +9,9 @@
       <p>{{producto.precio}} USD</p>
       <button (click)="createPaymentPreference()">Comprar</button>
       @if(verificador){
-        <button (click)="deleteProducto()">Eliminar</button>
-        <button (click)="editProduct()">Editar</button>
+        <button (click)="type='eliminar'; togglePopUp()">Eliminar</button>
+        <button (click)="type='editar'; togglePopUp()">Editar</button>
       }
   </div>
 </div>
+<app-pop-up-warning [type]="type" (confirm)="confirmAction($event)"></app-pop-up-warning>

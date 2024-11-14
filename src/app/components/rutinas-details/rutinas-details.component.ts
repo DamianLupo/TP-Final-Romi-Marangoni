@@ -1,26 +1,33 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuStateService } from '../../service/menu-state.service';
 import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { UsuarioService } from '../../service/usuario.service';
+import { PopUpWarningComponent } from '../pop-up-warning/pop-up-warning.component';
 import { RutinaServiceService } from './../../service/rutina.service.service';
 
 @Component({
   selector: 'app-rutinas-details',
   standalone: true,
-  imports: [],
+  imports: [PopUpWarningComponent],
   templateUrl: './rutinas-details.component.html',
   styleUrl: './rutinas-details.component.css'
 })
 export class RutinasDetailsComponent implements OnInit {
   rutina : any;
-
+  isOpen: boolean = false;
+  type: string = '';
   routes = inject(ActivatedRoute);
   rutinaService = inject(RutinaServiceService);
+  closeWarning = inject(MenuStateService);
 
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
     this.obtenerRutinaId(id);
     this.verificador=this.usuarioService.isAdmin();
+    this.closeWarning.isOpenWarning$.subscribe((isOpen) => {
+      this.isOpen = isOpen;
+    });
   }
   usuarioService = inject(UsuarioService);
   obtenerRutinaId(id: string | null){
@@ -61,6 +68,18 @@ export class RutinasDetailsComponent implements OnInit {
   editRutina(){
 
     this.router.navigate([`/editRutina/${this.rutina.id}`], {state: {rutina: this.rutina}});
+  }
+
+  confirmAction(confirmed: string) {
+    if (confirmed === 'eliminar') {
+      this.deleteRutina();
+    }
+    else if (confirmed === 'editar') {
+      this.editRutina();
+    }
+  }
+  togglePopUp(){
+    this.closeWarning.openWarning();
   }
 
 }

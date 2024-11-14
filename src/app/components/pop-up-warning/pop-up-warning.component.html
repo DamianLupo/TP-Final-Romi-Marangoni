@@ -1,0 +1,14 @@
+<div class="container" [ngClass]="{'open': isOpen}">
+    <div class="pop-up-add" [ngClass]="{'open': isOpen}">
+        <div class="header">
+            <span class="close-btn" (click)="cancelAction()">✕</span>
+        </div>
+        <div class="pop-up">
+            <h2>Estas seguro de querer {{type}} este producto?</h2>   
+            <div class="buttons">
+                <button routerLink="/home">Cancelar</button>
+                <button (click)="confirmAction()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>

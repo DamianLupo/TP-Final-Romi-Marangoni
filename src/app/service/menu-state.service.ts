@@ -7,8 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 export class MenuStateService {
   private isOpenSubject = new BehaviorSubject<boolean>(false);
   private isOpenPopupSubject = new BehaviorSubject<boolean>(false);
+  private isOpenWarningSubject = new BehaviorSubject<boolean>(false);
   isOpen$ = this.isOpenSubject.asObservable();
   isOpenPopup$ = this.isOpenPopupSubject.asObservable();
+  isOpenWarning$ = this.isOpenWarningSubject.asObservable();
 
   openMenu() {
     this.isOpenSubject.next(true);
@@ -24,5 +26,13 @@ export class MenuStateService {
 
   closePopup() {
     this.isOpenPopupSubject.next(false);
+  }
+
+  openWarning() {
+    this.isOpenWarningSubject.next(true);
+  }
+
+  closeWarning() {
+    this.isOpenWarningSubject.next(false);
   }
 } 
