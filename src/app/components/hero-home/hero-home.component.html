@@ -4,10 +4,10 @@
             <h1>RMF</h1>
         </div>   
         <div class="hero-home-search-input">
-            <input type="text" placeholder="find products">
+            <input type="text" #searchInput placeholder="find products">
             <div style="display: flex; flex-direction: row; gap: 10px;">
-                <button>Register</button>
-                <button>Buscar</button>
+                <button (click)="toRegister()">Register</button>
+                <button (click)="buscar(searchInput.value)">Buscar</button>
             </div>
         </div>
     </div>

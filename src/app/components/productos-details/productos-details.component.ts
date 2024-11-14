@@ -5,6 +5,7 @@ import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { ProductoService } from '../../service/producto.service';
 import { UsuarioService } from '../../service/usuario.service';
 import { PopUpWarningComponent } from '../pop-up-warning/pop-up-warning.component';
+import { HistorialComponent } from '../historial/historial.component';
 
 @Component({
   selector: 'app-productos-details',
@@ -28,8 +29,10 @@ export class ProductosDetailsComponent implements OnInit {
     this.closeWarning.isOpenWarning$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
+    this.comprado=history.state.comprado;
   }
   verificador=false;
+  comprado=false
 
   obtenerProducto(id: string | null){
     this.productoService.getProducto(id).subscribe(producto => this.producto = producto);

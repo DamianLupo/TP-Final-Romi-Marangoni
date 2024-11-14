@@ -28,7 +28,9 @@ export class RutinasDetailsComponent implements OnInit {
     this.closeWarning.isOpenWarning$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
+    this.comprado=history.state.comprado;
   }
+  comprado: boolean = false;
   usuarioService = inject(UsuarioService);
   obtenerRutinaId(id: string | null){
     this.rutinaService.getRutinaid(id).subscribe(rutina => this.rutina = rutina);

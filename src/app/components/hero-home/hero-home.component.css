@@ -107,3 +107,49 @@
     padding-right: 10%;
     width: 100%;
 }
+.hero-home-search-input button {
+    width: 50%;
+    background-color: #435053;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+    font-weight: 600;
+}
+
+.hero-home-search-input button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.hero-home-search-input button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(67, 80, 83, 0.4);
+    background: linear-gradient(45deg, #435053, #5a6b6f);
+    letter-spacing: 1.5px;
+}
+
+.hero-home-search-input button:hover::before {
+    left: 100%;
+}
+
+.hero-home-search-input button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(67, 80, 83, 0.3);
+}

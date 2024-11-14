@@ -7,7 +7,10 @@
       <img [src]="producto.imagen" alt="imagen">
       <p>{{producto.descripcion}}</p>
       <p>{{producto.precio}} USD</p>
-      <button (click)="createPaymentPreference()">Comprar</button>
+      @if(!comprado)
+      {
+        <button (click)="createPaymentPreference()">Comprar</button>
+      }
       @if(verificador){
         <button (click)="type='eliminar'; togglePopUp()">Eliminar</button>
         <button (click)="type='editar'; togglePopUp()">Editar</button>
