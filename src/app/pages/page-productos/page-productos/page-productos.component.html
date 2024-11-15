@@ -1,14 +1,16 @@
 <div class="product-general">
-  <h1>Productos.</h1>
+  <div class="titulo-filtros">
+      <h1>Productos</h1>
 
-  <select #ordenSelect (change)="ordenarPorPrecio(ordenSelect.value)">
-    <option value="">Selecciona una opción</option>
-    <option value="asc">Menor a mayor precio</option>
-    <option value="desc">Mayor a menor precio</option>
-</select>
+      <select #ordenSelect (change)="ordenarPorPrecio(ordenSelect.value)">
+        <option value="">Selecciona una opción</option>
+        <option value="asc">Menor a mayor precio</option>
+        <option value="desc">Mayor a menor precio</option>
+    </select>
+  </div>
 <div class="filtros">
-  <input type="number" #precioMin placeholder="Precio mínimo">
-  <input type="number" #precioMax placeholder="Precio máximo">
+  <input type="number" #precioMin placeholder="Precio mínimo" min="0">
+  <input type="number" #precioMax placeholder="Precio máximo" min="0">
   <button (click)="verificarCamposVacios(precioMin.value ? +precioMin.value : 0, precioMax.value ? +precioMax.value : 0)">
     Filtrar por precio
   </button>

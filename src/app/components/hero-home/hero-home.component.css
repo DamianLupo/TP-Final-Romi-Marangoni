@@ -115,27 +115,8 @@
     border: none;
     color: white;
     position: relative;
-    overflow: hidden;
     transition: all 0.3s ease;
-    z-index: 1;
     font-weight: 600;
-}
-
-.hero-home-search-input button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transition: 0.5s;
-    z-index: -1;
 }
 
 .hero-home-search-input button:hover {

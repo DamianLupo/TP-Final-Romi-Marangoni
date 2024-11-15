@@ -1,17 +1,17 @@
 <div class="rutinas-general">
   <div class="filtros-container">
+    <h1>Rutinas</h1>
     <select #ordenSelect (change)="ordenarPorPrecio(ordenSelect.value)">
       <option value="">Selecciona una opción</option>
       <option value="asc">Menor a mayor precio</option>
       <option value="desc">Mayor a menor precio</option>
     </select>
-    <div class="filtros">
-      <input type="number" #precioMin placeholder="Precio mínimo">
-      <input type="number" #precioMax placeholder="Precio máximo">
-      <button (click)="verificarCamposVacios(precioMin.value ? +precioMin.value : 0, precioMax.value ? +precioMax.value : 0)">Filtrar por precio</button>
-    </div>
   </div>
-
+  <div class="filtros">
+    <input type="number" #precioMin placeholder="Precio mínimo">
+    <input type="number" #precioMax placeholder="Precio máximo">
+    <button (click)="verificarCamposVacios(precioMin.value ? +precioMin.value : 0, precioMax.value ? +precioMax.value : 0)">Filtrar por precio</button>
+  </div>
   <div class="grid-rutinas">
     @for (rutina of listaRutinas; track rutina.id) {
     <div class="rutina">

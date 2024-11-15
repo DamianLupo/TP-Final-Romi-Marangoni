@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MenuStateService } from '../../service/menu-state.service';
 import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { UsuarioService } from '../../service/usuario.service';
@@ -9,7 +9,7 @@ import { RutinaServiceService } from './../../service/rutina.service.service';
 @Component({
   selector: 'app-rutinas-details',
   standalone: true,
-  imports: [PopUpWarningComponent],
+  imports: [PopUpWarningComponent, RouterLink],
   templateUrl: './rutinas-details.component.html',
   styleUrl: './rutinas-details.component.css'
 })

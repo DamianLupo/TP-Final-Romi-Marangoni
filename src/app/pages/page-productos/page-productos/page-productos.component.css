@@ -171,3 +171,13 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   background: linear-gradient(45deg, #000, #333);
 }
+
+.titulo-filtros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  padding-right: 50px;
+  padding-left: 50px;
+}

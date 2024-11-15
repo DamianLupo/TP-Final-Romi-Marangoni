@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { inject } from '@angular/core';
-import { ProductoService } from '../../service/producto.service';
-import { RutinaServiceService } from '../../service/rutina.service.service';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Producto } from '../../interface/producto.interface';
 import { RutinaInterface } from '../../interface/rutina.interface';
-import { Router, RouterModule } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { ProductoService } from '../../service/producto.service';
+import { RutinaServiceService } from '../../service/rutina.service.service';
 
 @Component({
   selector: 'app-find-products',
@@ -67,11 +66,20 @@ export class FindProductsComponent implements OnInit{
       this.arrayDeAmbos = this.arrayDeAmbos.filter(item => 
         item.precio >= precioMin && item.precio <= precioMax
       );
-    } else {
+    } else if (precioMin > 0 && precioMax == null) {
+          this.arrayDeAmbos = this.arrayDeAmbos.filter(item =>
+            item.precio >= precioMin
+          );
+    } else if (precioMin == null && precioMax > 0) {
+          this.arrayDeAmbos = this.arrayDeAmbos.filter(item =>
+            item.precio >= 0 && item.precio <= precioMax
+          );
+    }else {
       this.makeArray();
     }
   }
   verificarCamposVacios(precioMin: number, precioMax: number) {
+    this.makeArray();
     if (!precioMin && !precioMax) {
       this.makeArray();
     } else {

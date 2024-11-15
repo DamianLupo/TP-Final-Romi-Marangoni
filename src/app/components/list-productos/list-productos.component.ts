@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
 import { Producto } from '../../interface/producto.interface';
 import { ProductoService } from '../../service/producto.service';
 
 @Component({
   selector: 'app-list-productos',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, RouterLink],
   templateUrl: './list-productos.component.html',
   styleUrl: './list-productos.component.css'
 })

@@ -9,8 +9,10 @@
           <p class="nombre">Nombre del producto: {{item.nombre}}</p>
           <p class="precio">Precio: ${{item.precio}}</p>
           <p class="descripcion">Descripcion: {{item.descripcion}}</p>
-          <img [src]="item.imagen" alt="{{item.nombre}}" class="historial-imagen">
-          <button (click)="seeDetails(item.id)">Ver detalles</button>
+          <div class="historial-item-container">
+            <img [src]="item.imagen" alt="{{item.nombre}}" class="historial-imagen">
+            <button (click)="seeDetails(item.id)">Ver detalles</button>
+          </div>
         </div>
       }
     } @else {
