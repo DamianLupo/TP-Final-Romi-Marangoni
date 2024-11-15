@@ -20,6 +20,52 @@
   }
   
   .imagen-producto {
-    max-width: 100%;
-    height: auto;
+    width: 75%;
+    height: 60%;
+  object-fit:cover;
+  }
+
+  .btn-ver-detalles{
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-ver-detalles:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, #000, #333);
+  }
+  
+  .btn-ver-detalles:active {
+    transform: translateY(1px);
+  }
+  
+  .btn-ver-detalles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .btn-ver-detalles:hover::before {
+    left: 100%;
   }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
   selector: 'app-hero-home',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HeroHomeComponent {
   constructor(private router: Router){}
+  usuarioService = inject(UsuarioService);
   stringBuscar!: string
   buscar(searchValue: string){
     if(searchValue.length>0){
@@ -22,6 +24,11 @@ export class HeroHomeComponent {
     }
   }
   toRegister(){
-    this.router.navigate([`/register`]);
+    if(!this.usuarioService.usuarioEnSesion){
+      this.router.navigate([`/register`]);
+    }
+    else{
+      this.router.navigate([`/login`]);
+    }
   }
 }

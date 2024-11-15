@@ -1,5 +1,14 @@
+.rutina-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
 .product-container {
-  max-width: 800px;
+  width: 800px;
+  height: 70%;
   margin: 40px auto;
   padding: 30px;
   background: rgba(255, 255, 255, 0.1);
@@ -20,8 +29,9 @@
 }
 
 .product-container img {
-  max-width: 100%;
-  height: auto;
+  width: 50%;
+  height: 60%;
+  object-fit: cover;
   border-radius: 15px;
   margin-bottom: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -52,23 +62,24 @@
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
-
+.btn-volver-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
 .btn-volver {
-  position: absolute;
-  top: 100px;
-  left: 20px;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #ff4e4e, #e70f0f);
+  width: 100px;
+  height: 40px;
+  background: black;
+  color: white;
   border: none;
-  border-radius: 25px;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  margin-left: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
 .btn-volver:hover {

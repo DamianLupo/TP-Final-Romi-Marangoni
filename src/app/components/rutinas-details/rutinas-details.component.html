@@ -1,5 +1,8 @@
-<button routerLink="/rutinas" class="btn-volver">Volver</button>
-<div class="product-container">
+<div class="rutina-container">
+  <div class="btn-volver-container">
+    <button routerLink="/rutinas" class="btn-volver">Volver</button>
+  </div>
+  <div class="product-container">
   <h1>{{rutina.nombre}}</h1>
     <img [src]="rutina.imagen" alt="imagen">
     <p>{{rutina.descripcion}}</p>
@@ -15,3 +18,4 @@
     
 </div>
 <app-pop-up-warning [type]="type" (confirm)="confirmAction($event)"></app-pop-up-warning>
+</div>

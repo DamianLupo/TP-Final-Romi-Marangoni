@@ -1,9 +1,8 @@
+import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { ListProductosComponent } from "../../../components/list-productos/list-productos.component";
+import { RouterLink } from "@angular/router";
 import { Producto } from "../../../interface/producto.interface";
 import { ProductoService } from "../../../service/producto.service";
-import { RouterLink } from "@angular/router";
-import { CommonModule } from "@angular/common";
 
 
 @Component({
@@ -56,7 +55,29 @@ filtrarPorRangoPrecio(precioMin: number, precioMax: number) {
         console.log(e.message);
       }
     });
-  } else {
+  } else if (precioMin > 0 && precioMax == null) {
+    this.productoService.getProductos().subscribe({
+      next: (productos: Producto[]) => {
+        this.listaProductos = productos.filter(producto =>
+          producto.precio >= precioMin
+        );
+      },
+      error: (e: Error) => {
+        console.log(e.message);
+      }
+    });
+  } else if (precioMin == null && precioMax > 0) {
+    this.productoService.getProductos().subscribe({
+      next: (productos: Producto[]) => {
+        this.listaProductos = productos.filter(producto =>
+          producto.precio >= 0 && producto.precio <= precioMax
+        );
+      },
+      error: (e: Error) => {
+        console.log(e.message);
+      }
+    });
+  }else{
     this.listarProductos();
   }
 }

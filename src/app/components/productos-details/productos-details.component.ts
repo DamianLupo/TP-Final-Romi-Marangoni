@@ -5,7 +5,6 @@ import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { ProductoService } from '../../service/producto.service';
 import { UsuarioService } from '../../service/usuario.service';
 import { PopUpWarningComponent } from '../pop-up-warning/pop-up-warning.component';
-import { HistorialComponent } from '../historial/historial.component';
 
 @Component({
   selector: 'app-productos-details',
@@ -20,7 +19,8 @@ export class ProductosDetailsComponent implements OnInit {
   type: string = '';
   routes = inject(ActivatedRoute);
   productoService = inject(ProductoService);
-  usuarioService = inject(UsuarioService);
+  usuarioService = inject(UsuarioService);  
+  comprado: boolean = false;
   closeWarning = inject(MenuStateService);
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
@@ -29,10 +29,9 @@ export class ProductosDetailsComponent implements OnInit {
     this.closeWarning.isOpenWarning$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
-    this.comprado=history.state.comprado;
+    this.comprado= history.state.comprado;
   }
   verificador=false;
-  comprado=false
 
   obtenerProducto(id: string | null){
     this.productoService.getProducto(id).subscribe(producto => this.producto = producto);
@@ -49,7 +48,7 @@ export class ProductosDetailsComponent implements OnInit {
     this.mercadoPagoService.createPreference(title, quantity, unitPrice, productId).subscribe(
       response => {
         console.log('ID de la preferencia:', response.id);
-        window.location.href = response.init_point;
+        window.location.href = response.init_point; 
       },
       error => {
         console.error('Error al crear la preferencia', error);
@@ -66,9 +65,9 @@ export class ProductosDetailsComponent implements OnInit {
       }
     });
     this.router.navigate(['/home']);
-
+    
   }
-
+  
   editProduct()
   {
     this.router.navigate([`/editProduct/${this.producto.id}`], {state: {producto: this.producto}});
@@ -83,14 +82,8 @@ export class ProductosDetailsComponent implements OnInit {
     }
   }
 
-  cancelAction(cancel: boolean) {
-    this.isOpen = cancel;
-    console.log(this.isOpen);
-  }
-
   togglePopUp(){
     this.closeWarning.openWarning();
   }
 
-  
 }

@@ -1,11 +1,13 @@
 <div class="general-container">
+   <div class="filtros-container-titulo">
     <h1>Resultados de la busqueda</h1>
+    <select #ordenSelect (change)="ordenarPorPrecio(ordenSelect.value)">
+        <option value="">Selecciona una opción</option>
+        <option value="asc">Menor a mayor precio</option>
+        <option value="desc">Mayor a menor precio</option>
+      </select>
+   </div>
     <div class="filtros-container">
-        <select #ordenSelect (change)="ordenarPorPrecio(ordenSelect.value)">
-          <option value="">Selecciona una opción</option>
-          <option value="asc">Menor a mayor precio</option>
-          <option value="desc">Mayor a menor precio</option>
-        </select>
         <div class="filtros">
           <input type="number" #precioMin placeholder="Precio mínimo">
           <input type="number" #precioMax placeholder="Precio máximo">

@@ -5,6 +5,7 @@
       <p class="precio-producto">{{producto.precio}}</p>
       <p class="descripcion-producto">{{producto.descripcion}}</p>
       <img [src]="producto.imagen" class="imagen-producto" alt="imagen">
+      <button routerLink="/detalles/{{producto.id}}" class="btn-ver-detalles">Ver detalles</button>
     </div>
   }
 </div>
