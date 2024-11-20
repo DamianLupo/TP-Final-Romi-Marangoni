@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  min-height: 90vh;
+  margin-top: 30px;
 }
 
 .product-container {
@@ -45,10 +46,10 @@
 
 .product-container button {
   padding: 12px 30px;
-  background: linear-gradient(135deg, #4effe2, #0fe70f);
+  background: black;
   border: none;
   border-radius: 25px;
-  color: #000000;
+  color: white;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
