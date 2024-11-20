@@ -32,5 +32,6 @@ export const routes: Routes = [
   {path: "editRutina/:id", component: EditRutinaComponent},
   {path: "misProductos", component: HistorialComponent},
   {path: "misRutinas", component: HistorialRutinasComponent},
-  {path: "searchProducts", component: FindProductsComponent}
+  {path: "searchProducts", component: FindProductsComponent},
+  {path: "**", redirectTo: "home"}
 ];

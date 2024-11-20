@@ -49,6 +49,17 @@ export class RutinasDetailsComponent implements OnInit {
       response => {
         console.log('ID de la preferencia:', response.id);
         window.location.href = response.init_point;
+        if(this.usuarioService.usuarioEnSesion?.rutinas){
+          this.usuarioService.usuarioEnSesion.rutinas.push(this.rutina);
+          this.usuarioService.putUser(this.usuarioService.usuarioEnSesion, this.usuarioService.usuarioEnSesion?.id).subscribe({
+            next: ()=>{
+              console.log("Rutina agregada exitosamente");
+            },
+            error: (e: Error)=>{
+              console.log("Error al agregar la rutina", e);
+            }
+          });
+        }
       },
       error => {
         console.error('Error al crear la preferencia', error);
