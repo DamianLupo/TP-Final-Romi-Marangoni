@@ -49,6 +49,17 @@ export class ProductosDetailsComponent implements OnInit {
       response => {
         console.log('ID de la preferencia:', response.id);
         window.location.href = response.init_point; 
+        if(this.usuarioService.usuarioEnSesion?.productos){
+          this.usuarioService.usuarioEnSesion.productos.push(this.producto);
+          this.usuarioService.putUser(this.usuarioService.usuarioEnSesion, this.usuarioService.usuarioEnSesion.id).subscribe({
+            next: ()=>{
+              console.log("Producto agregado al usuario");
+            },
+            error: (e: Error)=>{
+              console.log("Error al agregar el producto al usuario", e.message);
+            }
+          });
+        }
       },
       error => {
         console.error('Error al crear la preferencia', error);

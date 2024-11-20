@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    mercadoPagoAccessToken: 'APP_USR-6456647479360883-102213-5536e71b1065039dcd55206c6aa233fb-391010886'
+    mercadoPagoAccessToken: 'APP_USR-1753109060514847-111115-e66e4c5529825b9d03e27dadd48918f9-391010886'
   };
   
