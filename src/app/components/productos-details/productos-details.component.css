@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 90vh;
+  min-height: 90vh;
   margin-top: 30px;
 }
 
@@ -43,7 +43,7 @@
 .product-container button {
   padding: 1rem 3rem;
   font-size: 1.1rem;
-  background: linear-gradient(135deg, #4CAF50, #45a049);
+  background: black;
   color: white;
   border: none;
   border-radius: 50px;
@@ -55,7 +55,7 @@
 .product-container button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-  background: linear-gradient(135deg, #45a049, #4CAF50);
+  background: black;
 }
  
 .btn-container{
