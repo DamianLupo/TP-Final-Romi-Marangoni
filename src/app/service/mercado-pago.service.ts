@@ -11,7 +11,7 @@ export class MercadoPagoService {
 
   constructor(private http: HttpClient) {}
 
-  createPreference(title: string, quantity: number, unitPrice: number, productId: string): Observable<any> {
+  createPreference(title: string, quantity: number, unitPrice: number, productId: string | any): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${environment.mercadoPagoAccessToken}`,
       'Content-Type': 'application/json'

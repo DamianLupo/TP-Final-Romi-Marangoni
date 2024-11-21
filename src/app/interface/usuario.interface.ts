@@ -8,8 +8,8 @@ export interface Usuario{
     username: string,
     email: string,
     password: string,
-    rutinas?: RutinaInterface[],
-    productos?: Producto[],
+    rutinas : [],
+    productos:[],
     numDeTelefono: number,
     isAdmin: boolean
 }
