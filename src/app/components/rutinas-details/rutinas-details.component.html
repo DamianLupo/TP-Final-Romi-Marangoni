@@ -10,12 +10,34 @@
     @if(!comprado){
       <button (click)="createPaymentPreference()">Comprar</button>
     }
-    
+
     @if(verificador){
       <button (click)="type='eliminar'; togglePopUp()">Eliminar</button>
       <button (click)="type='editar'; togglePopUp()">Editar</button>
     }
-    
+    @if(this.usuarioService.usuarioEnSesion && !verificador)
+  {
+    <div class="comments-section">
+      <div class="comment-form">
+        <textarea placeholder="Añade tu comentario..." [(ngModel)]="newComment" class="comment-input"></textarea>
+        <button (click)="addComment()" class="comment-btn">Comentar</button>
+      </div>
+    </div>
+  }
+
+  <div class="comments-list">
+    @for(comment of rutina.comments; track comment.id) {
+      <div class="comment-card">
+        <div class="comment-header">
+          <span class="comment-author">{{comment.author}}</span>
+          <span class="comment-date">{{comment.fecha | date:'dd/MM/yyyy HH:mm'}}</span>
+        </div>
+        <p class="comment-body">{{comment.body}}</p>
+      </div>
+    }
+  </div>
+
+
 </div>
 <app-pop-up-warning [type]="type" (confirm)="confirmAction($event)"></app-pop-up-warning>
 </div>
