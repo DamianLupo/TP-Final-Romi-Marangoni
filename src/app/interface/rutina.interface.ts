@@ -1,3 +1,5 @@
+import { ComentarioInterface } from "./comentario.interface";
+
 export interface RutinaInterface {
   id: string;
   nombre: string;
@@ -5,4 +7,5 @@ export interface RutinaInterface {
   imagen: string;
   precio: number;
   urlDescarga: string;
+  comments?: ComentarioInterface[]
 }

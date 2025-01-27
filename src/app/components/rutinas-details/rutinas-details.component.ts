@@ -5,11 +5,13 @@ import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { UsuarioService } from '../../service/usuario.service';
 import { PopUpWarningComponent } from '../pop-up-warning/pop-up-warning.component';
 import { RutinaServiceService } from './../../service/rutina.service.service';
+import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rutinas-details',
   standalone: true,
-  imports: [PopUpWarningComponent, RouterLink],
+  imports: [PopUpWarningComponent, RouterLink, DatePipe, FormsModule],
   templateUrl: './rutinas-details.component.html',
   styleUrl: './rutinas-details.component.css'
 })
@@ -18,6 +20,7 @@ export class RutinasDetailsComponent implements OnInit {
   isOpen: boolean = false;
   type: string = '';
   routes = inject(ActivatedRoute);
+  newComment: string ="";
   rutinaService = inject(RutinaServiceService);
   closeWarning = inject(MenuStateService);
 
@@ -93,6 +96,29 @@ export class RutinasDetailsComponent implements OnInit {
   }
   togglePopUp(){
     this.closeWarning.openWarning();
+  }
+  addComment() {
+    if (!this.newComment.trim()) return;
+    if (!this.rutina.comments) {
+      this.rutina.comments = [];
+    }
+
+    const comment = {
+      id: Date.now().toString(),
+      author: this.usuarioService.usuarioEnSesion?.username || 'Anónimo',
+      fecha: new Date(),
+      body: this.newComment.trim()
+    };
+
+    this.rutina.comments.push(comment);
+    this.rutinaService.putRutina(this.rutina, this.rutina.id).subscribe({
+      next: () => {
+        this.newComment = '';
+        console.log('Comentario agregado exitosamente');
+        this.router.navigate(['/detalles-rutinas/${rutina.id)'])
+      },
+      error: (e) => console.error('Error al agregar comentario:', e)
+    });
   }
 
 }

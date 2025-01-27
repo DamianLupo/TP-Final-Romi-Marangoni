@@ -31,7 +31,8 @@ export class AddRutinasComponent implements OnInit{
     descripcion: ["", [Validators.required]],
     precio: [0, [Validators.required, Validators.min(1)]],
     urlDescarga: ["urlexample.com"],
-    imagen: ["",Validators.required]
+    imagen: ["",Validators.required],
+    comments: this.fb.array([])
   });
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -46,10 +47,15 @@ export class AddRutinasComponent implements OnInit{
     }
   }
   addRutina() {
+    console.log(this.formrutinas.valid);
     if (this.formrutinas.invalid) return;
 
-    const rutina: RutinaInterface = this.formrutinas.getRawValue();
+    const rutina: RutinaInterface = {
+      ...this.formrutinas.getRawValue(),
+      comments: []
+    };
     rutina.id = this.rutinasService.setID();
+    console.log("ID SETEADO EN: "+rutina.id);
 
     this.rutinasService.postRutina(rutina).subscribe({
       next: () => {

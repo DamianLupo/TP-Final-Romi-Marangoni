@@ -30,6 +30,9 @@ export class ProductoService {
     return this.http.get<Producto>(`${this.urlBase}/${id}`);
   }
   setID(): string{
+    if (this.productos.length === 0) {
+      return "1";
+    }
     return (Number(this.productos[this.productos.length - 1].id) + 1).toString();
   }
   putProducto(producto: Producto, id: number):Observable<Producto>{

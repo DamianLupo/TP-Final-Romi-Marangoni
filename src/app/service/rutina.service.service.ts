@@ -1,3 +1,4 @@
+import { ClusterMessage } from './../../../node_modules/socket.io-adapter/dist/cluster-adapter.d';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -30,9 +31,11 @@ export class RutinaServiceService {
   getRutinaid(id: string | null):Observable<RutinaInterface>{
     return this.http.get<RutinaInterface>(`${this.urlBase}/${id}`);
   }
-  setID() : string
-  {
-    return (Number(this.rutinas[this.rutinas.length-1].id!)+1).toString()
+  setID() : string {
+    if (this.rutinas.length === 0) {
+      return "1";
+    }
+    return (Number(this.rutinas[this.rutinas.length-1].id) + 1).toString();
   }
   putRutina(rutina: RutinaInterface, id: number):Observable<RutinaInterface>{
     return this.http.put<RutinaInterface>(`${this.urlBase}/${id}`, rutina);

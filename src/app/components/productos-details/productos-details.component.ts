@@ -5,11 +5,13 @@ import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { ProductoService } from '../../service/producto.service';
 import { UsuarioService } from '../../service/usuario.service';
 import { PopUpWarningComponent } from '../pop-up-warning/pop-up-warning.component';
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-productos-details',
   standalone: true,
-  imports: [RouterLink, PopUpWarningComponent],
+  imports: [RouterLink, PopUpWarningComponent, FormsModule, DatePipe],
   templateUrl: './productos-details.component.html',
   styleUrl: './productos-details.component.css'
 })
@@ -17,11 +19,14 @@ export class ProductosDetailsComponent implements OnInit {
   producto : any;
   isOpen: boolean = false;
   type: string = '';
+  newComment: string ="";
   routes = inject(ActivatedRoute);
   productoService = inject(ProductoService);
-  usuarioService = inject(UsuarioService);  
+  usuarioService = inject(UsuarioService);
   comprado: boolean = false;
   closeWarning = inject(MenuStateService);
+
+
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
     this.obtenerProducto(id);
@@ -34,7 +39,12 @@ export class ProductosDetailsComponent implements OnInit {
   verificador=false;
 
   obtenerProducto(id: string | null){
-    this.productoService.getProducto(id).subscribe(producto => this.producto = producto);
+    this.productoService.getProducto(id).subscribe(producto => {
+      this.producto = producto;
+      if (!this.producto.comments) {
+        this.producto.comments = [];
+      }
+    });
   }
 
   constructor(private mercadoPagoService: MercadoPagoService, private router: Router) {}
@@ -48,7 +58,7 @@ export class ProductosDetailsComponent implements OnInit {
     this.mercadoPagoService.createPreference(title, quantity, unitPrice, productId).subscribe(
       response => {
         console.log('ID de la preferencia:', response.id);
-        window.location.href = response.init_point; 
+        window.location.href = response.init_point;
         if(this.usuarioService.usuarioEnSesion?.productos){
           this.usuarioService.usuarioEnSesion.productos.push(this.producto);
           this.usuarioService.putUser(this.usuarioService.usuarioEnSesion, this.usuarioService.usuarioEnSesion.id).subscribe({
@@ -76,9 +86,32 @@ export class ProductosDetailsComponent implements OnInit {
       }
     });
     this.router.navigate(['/home']);
-    
+
   }
-  
+  addComment() {
+    if (!this.newComment.trim()) return;
+    if (!this.producto.comments) {
+      this.producto.comments = [];
+    }
+
+    const comment = {
+      id: Date.now().toString(),
+      author: this.usuarioService.usuarioEnSesion?.username || 'Anónimo',
+      fecha: new Date(),
+      body: this.newComment.trim()
+    };
+
+    this.producto.comments.push(comment);
+    this.productoService.putProducto(this.producto, this.producto.id).subscribe({
+      next: () => {
+        this.newComment = '';
+        console.log('Comentario agregado exitosamente');
+        this.router.navigate(['/detalles/${producto.id)'])
+      },
+      error: (e) => console.error('Error al agregar comentario:', e)
+    });
+  }
+
   editProduct()
   {
     this.router.navigate([`/editProduct/${this.producto.id}`], {state: {producto: this.producto}});

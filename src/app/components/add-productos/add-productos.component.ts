@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 
 export class AddProductosComponent implements OnInit {
   ngOnInit(): void {
-    
+
     this.productoService.getProductos().subscribe({
       next: ()=>{
         console.log("Productos bajados exitosamente");
@@ -26,7 +26,7 @@ export class AddProductosComponent implements OnInit {
     });
   }
   constructor(private router: Router ){}
-    
+
   fb = inject(FormBuilder);
   productoService = inject(ProductoService);
 
@@ -35,7 +35,8 @@ export class AddProductosComponent implements OnInit {
     nombre: ['', [Validators.required, Validators.minLength(3)]],
     precio: [0, [Validators.required,Validators.min(1)]],
     descripcion: ['', [Validators.required, Validators.minLength(10)]],
-    imagen: ['', [Validators.required]]
+    imagen: ['', [Validators.required]],
+    comments: [[]]
   })
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -53,17 +54,26 @@ export class AddProductosComponent implements OnInit {
   addProducto() {
     if(this.formulario.invalid) return;
 
-    const producto = this.formulario.getRawValue();
-    producto.id = this.productoService.setID();
-    this.productoService.postProducto(producto).subscribe({
-      next: () =>{
-        console.log("Producto agregado correctamente");
+
+    this.productoService.getProductos().subscribe({
+      next: () => {
+        const producto = this.formulario.getRawValue();
+        producto.id = this.productoService.setID();
+
+        this.productoService.postProducto(producto).subscribe({
+          next: () => {
+            console.log("Producto agregado correctamente");
+            this.router.navigate(['/home']);
+          },
+          error: (e: Error) => {
+            console.log("Error al agregar el producto", e.message);
+          }
+        });
       },
-      error: (e : Error) =>{
-        console.log("Error al agregar el producto", e.message);
+      error: (e: Error) => {
+        console.log("Error al obtener los productos", e.message);
       }
-    })
-    this.router.navigate(['/home']);
+    });
   }
 
 }

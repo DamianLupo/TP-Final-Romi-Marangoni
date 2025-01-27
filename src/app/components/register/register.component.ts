@@ -17,13 +17,13 @@ export class RegisterComponent {
 
   registerForm = this.fb.nonNullable.group({
     nombre: ['', [Validators.required]],
-    apellido: ['', [Validators.required]], 
+    apellido: ['', [Validators.required]],
     username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]],
     numDeTelefono: ['', [Validators.required]],
     rutinas: [[]],
-    productos: []
+    productos: [[]]
   });
   router = inject(Router);
   verificadorMail: boolean = false;
@@ -48,7 +48,7 @@ export class RegisterComponent {
     }
     if(this.verificadorMail)return;
 
-   
+
 
     this.usuariosService.addUsuario(newUser).subscribe({
       next: () => {
