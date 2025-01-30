@@ -2,42 +2,47 @@
   <div class="btn-volver-container">
     <button routerLink="/rutinas" class="btn-volver">Volver</button>
   </div>
-  <div class="product-container">
-  <h1>{{rutina.nombre}}</h1>
-    <img [src]="rutina.imagen" alt="imagen">
-    <p>{{rutina.descripcion}}</p>
-    <p>{{rutina.precio}} USD</p>
-    @if(!comprado){
-      <button (click)="createPaymentPreference()">Comprar</button>
-    }
+  
 
-    @if(verificador){
-      <button (click)="type='eliminar'; togglePopUp()">Eliminar</button>
-      <button (click)="type='editar'; togglePopUp()">Editar</button>
-    }
-    @if(this.usuarioService.usuarioEnSesion && !verificador)
-  {
-    <div class="comments-section">
-      <div class="comment-form">
-        <textarea placeholder="Añade tu comentario..." [(ngModel)]="newComment" class="comment-input"></textarea>
-        <button (click)="addComment()" class="comment-btn">Comentar</button>
-      </div>
-    </div>
-  }
 
-  <div class="comments-list">
-    @for(comment of rutina.comments; track comment.id) {
-      <div class="comment-card">
-        <div class="comment-header">
-          <span class="comment-author">{{comment.author}}</span>
-          <span class="comment-date">{{comment.fecha | date:'dd/MM/yyyy HH:mm'}}</span>
+  <div class="product-comments-container">
+    <div>
+      <div class="product-container">
+        <h1>{{rutina.nombre}}</h1>
+          <img [src]="rutina.imagen" alt="imagen">
+          <p>{{rutina.descripcion}}</p>
+          <p>{{rutina.precio}} USD</p>
+          @if(!comprado){
+            <button (click)="createPaymentPreference()">Comprar</button>
+          }
+      
+          @if(verificador){
+            <button (click)="type='eliminar'; togglePopUp()">Eliminar</button>
+            <button (click)="type='editar'; togglePopUp()">Editar</button>
+          }
         </div>
-        <p class="comment-body">{{comment.body}}</p>
-      </div>
-    }
+          @if(this.usuarioService.usuarioEnSesion && !verificador)
+        {
+          <div class="comments-section">
+            <div class="comment-form">
+              <textarea placeholder="Añade tu comentario..." [(ngModel)]="newComment" class="comment-input"></textarea>
+              <button (click)="addComment()" class="comment-btn">Comentar</button>
+            </div>
+          </div>
+        }
+    </div>
+    <div class="comments-list">
+      <h3>Comentarios del Producto:</h3>
+      @for(comment of rutina.comments; track comment.id) {
+        <div class="comment-card">
+          <div class="comment-header">
+            <span class="comment-author">{{comment.author}}</span>
+            <span class="comment-date">{{comment.fecha | date:'dd/MM/yyyy HH:mm'}}</span>
+          </div>
+          <p class="comment-body">{{comment.body}}</p>
+        </div>
+      }
+    </div>
   </div>
-
-
-</div>
 <app-pop-up-warning [type]="type" (confirm)="confirmAction($event)"></app-pop-up-warning>
 </div>

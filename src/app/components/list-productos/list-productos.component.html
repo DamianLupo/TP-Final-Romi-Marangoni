@@ -1,6 +1,6 @@
-<div class="grid-productos">
+<div [class]="isHome ? 'grid-productos-home' : 'grid-productos'">
   @for (producto of listaProductos.slice(0,5); track producto.id) {
-    <div class="producto">
+    <div [class]="isHome ? 'producto-home' : 'producto'">
       <h3 class="titulo-producto">{{producto.nombre}}</h3>
       <p class="precio-producto">{{producto.precio}}</p>
       <p class="descripcion-producto">{{producto.descripcion}}</p>

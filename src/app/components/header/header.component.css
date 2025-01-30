@@ -10,14 +10,21 @@ body {
 }
 
 .navbar {
-    width: 100%;
-    z-index: 1000;
     background-color: #f8f9fa;
-    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0;
+    height: 75px;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.center{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar .logo {
@@ -29,6 +36,7 @@ body {
     list-style: none;
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .nav-links li a {
@@ -45,7 +53,6 @@ body {
     box-shadow: none; /* Opcional: ajusta el estilo de sombra */
     border: none; /* Opcional: ajusta el borde */
 }
-
 
 .user-image {
     width: 20px;
@@ -89,6 +96,7 @@ body {
     text-decoration: none;
     color: #000;
 }
+
 .add-btn {
     color: #000000;
     font-weight: bold;
@@ -105,6 +113,7 @@ body {
 .add-btn:hover {
     transform: scale(1.05);
 }
+
 .nav-links li a {
     position: relative;
     padding-bottom: 2px;
