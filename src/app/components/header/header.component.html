@@ -1,6 +1,9 @@
 <nav class="navbar">
-    <a routerLink="/home" class="logo">Home</a>
-    <ul class="nav-links">
+    <div class="center">
+        <a routerLink="/home" class="logo">Home</a>
+    </div>
+    <div class="center">
+        <ul class="nav-links">
         <!-- <li><a href="http://localhost:4200/menu"><i class="fas fa-cog"></i> Configuración</a></li> -->
         <li><a routerLink="/home">Home</a></li>
         <li><a routerLink="/productos">Productos</a></li>
@@ -12,23 +15,26 @@
             <li><a routerLink="/login" class="login-btn"> Iniciar sesión</a></li>
         }
     </ul>
-    <div class="sign-in-btn">
-        @if(verificador)
-        {
-            <button class="add-btn" (click)="togglePopUpProductsAndRutins()">Agregar</button>
-        }
-        <div class="dropdown">
-            <img (click)="togglePopup()" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="user-image">
-            <div class="dropdown-content"  [ngClass]="{'show': popupState}">
-                <a class="modify-btn" (click)="toggleMenu(); togglePopup()"><i class="fas fa-cog"></i> Configuración</a>
-                @if(isLogged){
-                    <a href="#" class="delete-btn" (click)="logout(); togglePopup()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
-                }
-                @else{
-                    <a routerLink="/login" class="login-btn"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
-                }
-                <a routerLink="/misProductos" (click)="togglePopup()">Mis productos</a>
-                <a routerLink="/misRutinas" (click)="togglePopup()">Mis rutinas</a>
+    </div>
+    <div class="center">
+        <div class="sign-in-btn">
+            @if(verificador)
+            {
+                <button class="add-btn" (click)="togglePopUpProductsAndRutins()">Agregar</button>
+            }
+            <div class="dropdown">
+                <img (click)="togglePopup()" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="user-image">
+                <div class="dropdown-content"  [ngClass]="{'show': popupState}">
+                    <a class="modify-btn" (click)="toggleMenu(); togglePopup()"><i class="fas fa-cog"></i> Configuración</a>
+                    @if(isLogged){
+                        <a href="#" class="delete-btn" (click)="logout(); togglePopup()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                    }
+                    @else{
+                        <a routerLink="/login" class="login-btn"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
+                    }
+                    <a routerLink="/misProductos" (click)="togglePopup()">Mis productos</a>
+                    <a routerLink="/misRutinas" (click)="togglePopup()">Mis rutinas</a>
+                </div>
             </div>
         </div>
     </div>

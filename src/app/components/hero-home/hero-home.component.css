@@ -4,7 +4,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 99vw;
-    height: 375px;
+    min-height: 50vh;
     display: flex;
     justify-content: start;
     padding-top: 2%;

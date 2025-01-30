@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { Producto } from '../../interface/producto.interface';
 import { ProductoService } from '../../service/producto.service';
@@ -11,6 +11,8 @@ import { ProductoService } from '../../service/producto.service';
   styleUrl: './list-productos.component.css'
 })
 export class ListProductosComponent {
+  @Input() isHome: boolean = false;
+
   ngOnInit(): void{
     this.listarProductos();
   }
