@@ -31,7 +31,7 @@ export class HistorialComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const paymentId = params['payment_id'];
       const status = params['status'];
-      
+
       if (status === 'approved') {
         this.handleSuccessfulPayment(paymentId);
       }
@@ -53,22 +53,18 @@ export class HistorialComponent implements OnInit {
     if (this.usuario) {
       this.productoService.getProducto(id).subscribe(producto => {
         this.producto = producto;
-        
+
         if (!this.usuario.productos) {
           this.usuario.productos = [];
         }
-        
+
         this.usuario.productos.push(this.producto);
-  
+
         this.usuarioService.actualizarUsuario(this.usuario).subscribe(() => {
           console.log('Historial actualizado correctamente');
         });
       });
     }
   }
-  seeDetails(id: string | null) {
 
-    console.log(this.usuario.productos);
-    this.router.navigate([`/detalles/${id}`],{state:{comprado: this.comprado}});
-  }
 }

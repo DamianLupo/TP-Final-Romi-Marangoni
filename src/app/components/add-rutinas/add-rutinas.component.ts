@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RutinaServiceService } from '../../service/rutina.service.service';
 import { RutinaInterface } from '../../interface/rutina.interface';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
   selector: 'app-add-rutinas',
@@ -22,7 +23,12 @@ export class AddRutinasComponent implements OnInit{
         console.log(`Error en la baja: ${e}`);
       }
     })
+    if (!this.usuariosService.usuarioEnSesion || !this.usuario?.isAdmin) {
+      this.protectRoute()
+    }
   }
+  usuariosService = inject(UsuarioService);
+  usuario = this.usuariosService.usuarioEnSesion;
   fb = inject(FormBuilder);
   rutinasService = inject(RutinaServiceService)
   formrutinas = this.fb.nonNullable.group({
@@ -66,6 +72,10 @@ export class AddRutinasComponent implements OnInit{
         console.log("Error en la subida:", e);
       }
     });
+  }
+  protectRoute()
+  {
+   this.router.navigate(['/home']);
   }
 }
 

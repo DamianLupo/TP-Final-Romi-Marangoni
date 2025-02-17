@@ -5,6 +5,7 @@ import { inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductoService } from '../../service/producto.service';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -17,12 +18,17 @@ export class EditProductComponent implements OnInit{
 ngOnInit(): void {
   this.producto = history.state.producto;
   this.cargarForm();
-  
+  if (!this.usuariosService.usuarioEnSesion || !this.usuario?.isAdmin) {
+    this.protectRoute()
+  }
+
 }
+usuariosService = inject(UsuarioService);
+usuario = this.usuariosService.usuarioEnSesion;
 constructor(private router: Router){}
 productoService=inject(ProductoService);
  producto!: Producto;
- fb= inject(FormBuilder);  
+ fb= inject(FormBuilder);
  editform=this.fb.nonNullable.group({
   id: [""],
   nombre: ["", Validators.required],
@@ -60,6 +66,10 @@ productoService=inject(ProductoService);
       }
     }
   )
+  this.router.navigate(['/home']);
+ }
+ protectRoute()
+ {
   this.router.navigate(['/home']);
  }
 }

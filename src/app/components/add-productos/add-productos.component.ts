@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Producto } from '../../interface/producto.interface';
 import { ProductoService } from '../../service/producto.service';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
   selector: 'app-add-productos',
@@ -24,9 +25,13 @@ export class AddProductosComponent implements OnInit {
         console.log("Error al bajar los productos", e.message);
       }
     });
+    if (!this.usuariosService.usuarioEnSesion || !this.usuario?.isAdmin) {
+      this.protectRoute()
+    }
   }
   constructor(private router: Router ){}
-
+  usuariosService = inject(UsuarioService);
+  usuario = this.usuariosService.usuarioEnSesion;
   fb = inject(FormBuilder);
   productoService = inject(ProductoService);
 
@@ -74,6 +79,10 @@ export class AddProductosComponent implements OnInit {
         console.log("Error al obtener los productos", e.message);
       }
     });
+  }
+  protectRoute()
+  {
+   this.router.navigate(['/home']);
   }
 
 }
