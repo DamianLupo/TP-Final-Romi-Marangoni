@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit{
     this.menuStateService.isOpenPopup$.subscribe(isOpen => {
       this.isOpen = isOpen;
     });
+    this.usuariosService.initializeUsuarioEnSesion();
   }
   isOpen : boolean = false;
   popupState = false;
@@ -36,7 +37,7 @@ export class HeaderComponent implements OnInit{
   togglePopUpProductsAndRutins(){
     this.menuStateService.openPopup();
     console.log("open popup");
-    
+
     console.log(this.isOpen);
   }
   isAdmin()
@@ -49,5 +50,5 @@ export class HeaderComponent implements OnInit{
     {
       false
     }
-  } 
+  }
 }

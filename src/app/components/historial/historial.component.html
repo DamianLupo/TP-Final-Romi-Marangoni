@@ -2,7 +2,7 @@
     @if(usuario)
     {
         <h1>Mi Historial de Productos</h1>
-    
+
     @if (usuario.productos && usuario.productos.length > 0) {
       @for (item of usuario.productos; track $index) {
         <div class="historial-item">
@@ -11,7 +11,6 @@
           <p class="descripcion">Descripcion: {{item.descripcion}}</p>
           <div class="historial-item-container">
             <img [src]="item.imagen" alt="{{item.nombre}}" class="historial-imagen">
-            <button (click)="seeDetails(item.id)">Ver detalles</button>
           </div>
         </div>
       }

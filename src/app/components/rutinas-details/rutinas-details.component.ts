@@ -57,6 +57,7 @@ export class RutinasDetailsComponent implements OnInit {
           this.usuarioService.putUser(this.usuarioService.usuarioEnSesion, this.usuarioService.usuarioEnSesion?.id).subscribe({
             next: ()=>{
               console.log("Rutina agregada exitosamente");
+              this.router.navigate([`/home`]);
             },
             error: (e: Error)=>{
               console.log("Error al agregar la rutina", e);

@@ -65,7 +65,4 @@ export class HistorialRutinasComponent {
       });
     }
   }
-  seeDetails(id: string | null) {
-    this.router.navigate([`/detalles-rutinas/${id}`],{state:{comprado: this.comprado}});
-  }
 }

@@ -5,6 +5,7 @@ import { OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RutinaServiceService } from '../../service/rutina.service.service';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
   selector: 'app-edit-rutina',
@@ -14,11 +15,16 @@ import { Router } from '@angular/router';
   styleUrl: './edit-rutina.component.css'
 })
 export class EditRutinaComponent implements OnInit{
-  constructor(private router: Router){} 
+  constructor(private router: Router){}
   ngOnInit(): void {
     this.rutina= history.state.rutina;
     this.cargarForm();
+    if (!this.usuariosService.usuarioEnSesion || !this.usuario?.isAdmin) {
+      this.protectRoute()
+    }
   }
+  usuariosService = inject(UsuarioService);
+  usuario = this.usuariosService.usuarioEnSesion;
   rutinaService= inject(RutinaServiceService);
   fb= inject(FormBuilder);
   rutina!: RutinaInterface;
@@ -29,7 +35,7 @@ export class EditRutinaComponent implements OnInit{
     precio: [0, [Validators.required, Validators.min(1)]],
     urlDescarga: ["", Validators.required],
     imagen: ["", Validators.required]
-  });   
+  });
   cargarForm(){
     if(this.rutina){
       this.editform.patchValue(this.rutina);
@@ -60,5 +66,10 @@ export class EditRutinaComponent implements OnInit{
     );
     this.router.navigate(["/home"]);
   }
+  protectRoute()
+  {
+   this.router.navigate(['/home']);
+  }
+
 
 }
