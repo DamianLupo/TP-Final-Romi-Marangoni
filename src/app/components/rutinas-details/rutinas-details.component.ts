@@ -1,12 +1,13 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { EmailService } from '../../service/email.service';
 import { MenuStateService } from '../../service/menu-state.service';
 import { MercadoPagoService } from '../../service/mercado-pago.service';
 import { UsuarioService } from '../../service/usuario.service';
 import { PopUpWarningComponent } from '../pop-up-warning/pop-up-warning.component';
 import { RutinaServiceService } from './../../service/rutina.service.service';
-import { DatePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-rutinas-details',
@@ -39,7 +40,29 @@ export class RutinasDetailsComponent implements OnInit {
     this.rutinaService.getRutinaid(id).subscribe(rutina => this.rutina = rutina);
   }
   verificador=false;
-  constructor(private mercadoPagoService: MercadoPagoService,private router: Router) {}
+  constructor(private mercadoPagoService: MercadoPagoService,private router: Router, private emailService: EmailService) {}
+
+  email = { to: '', product: '', price: 0 };
+  message = '';
+
+  sendEmail() {
+    if (!this.email.to || !this.email.product || !this.email.price) {
+      this.message = '❌ Please fill in all fields.';
+      return;
+    }
+
+    this.emailService.sendEmail(this.email.to, this.email.product, this.email.price).subscribe({
+      next: () => {
+        this.message = '✅ Email sent successfully!';
+        console.log(this.message);
+      },
+      error: (error) => {
+        console.error('❌ Error sending email', error);
+        this.message = '❌ Could not send the email.';
+      }
+    });
+      this.message = '❌ Could not send the email.';
+}
 
   createPaymentPreference() {
     const title = this.rutina.nombre;
@@ -47,7 +70,7 @@ export class RutinasDetailsComponent implements OnInit {
     const unitPrice =  this.rutina.precio;
     const id = this.rutina.id;
 
-
+    if(this.usuarioService.usuarioEnSesion){
     this.mercadoPagoService.createPreference(title, quantity, unitPrice, id).subscribe(
       response => {
         console.log('ID de la preferencia:', response.id);
@@ -64,12 +87,20 @@ export class RutinasDetailsComponent implements OnInit {
             }
           });
         }
+          this.email.to = this.usuarioService.usuarioEnSesion?.email || '';
+          this.email.product = this.rutina.nombre;
+          this.email.price = this.rutina.precio;
+          const data = this.sendEmail();
+          console.log(data);
       },
       error => {
         console.error('Error al crear la preferencia', error);
+      },
 
-      }
     );
+  }else{
+    this.router.navigate([`/login`]);
+  }
   }
   deleteRutina(){
     this.rutinaService.deleteRutina(this.rutina.id).subscribe({
