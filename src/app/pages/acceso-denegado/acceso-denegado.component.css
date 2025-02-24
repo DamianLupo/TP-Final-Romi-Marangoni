@@ -1,0 +1,24 @@
+.access-denied-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(255, 0, 0, 0.1); /* Light red background */
+    border: 2px solid red; /* Red border */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+.access-denied-container h1 {
+    color: red;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.access-denied-container p {
+    color: #333;
+    font-size: 1.2rem;
+}

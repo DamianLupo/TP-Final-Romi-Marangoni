@@ -2,36 +2,39 @@ import { Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AddProductosComponent } from './components/add-productos/add-productos.component';
 import { AddRutinasComponent } from './components/add-rutinas/add-rutinas.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { EditRutinaComponent } from './components/edit-rutina/edit-rutina.component';
+import { FindProductsComponent } from './components/find-products/find-products.component';
+import { HistorialComponent } from './components/historial/historial.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { PoliticasComponent } from './components/politicas/politicas.component';
 import { ProductosDetailsComponent } from './components/productos-details/productos-details.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RutinasDetailsComponent } from './components/rutinas-details/rutinas-details.component';
 import { RutinasComponent } from './components/rutinas/rutinas.component';
+import { HistorialRutinasComponent } from './historial-rutinas/historial-rutinas.component';
+import { AccesoDenegadoComponent } from './pages/acceso-denegado/acceso-denegado.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageProductosComponent } from './pages/page-productos/page-productos/page-productos.component';
-import { EditProductComponent } from './components/edit-product/edit-product.component';
-import { EditRutinaComponent } from './components/edit-rutina/edit-rutina.component';
-import { HistorialComponent } from './components/historial/historial.component';
-import { HistorialRutinasComponent } from './historial-rutinas/historial-rutinas.component';
-import { FindProductsComponent } from './components/find-products/find-products.component';
+
 export const routes: Routes = [
   { path: '', component: InicioSesionComponent },
   { path: 'login', component: InicioSesionComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  {path:'sobre-nosotros', component: AboutUsComponent},
-  {path: 'terminos-y-condiciones', component: PoliticasComponent},
-  {path: 'detalles/:id', component: ProductosDetailsComponent},
-  {path: 'productos', component: PageProductosComponent},
-  {path: 'rutinas', component: RutinasComponent},
-  {path: 'detalles-rutinas/:id', component: RutinasDetailsComponent},
-  {path: "addRutinas", component: AddRutinasComponent},
-  {path: "addProductos", component: AddProductosComponent},
-  {path: "editProduct/:id", component: EditProductComponent},
-  {path: "editRutina/:id", component: EditRutinaComponent},
-  {path: "misProductos", component: HistorialComponent},
-  {path: "misRutinas", component: HistorialRutinasComponent},
-  {path: "searchProducts", component: FindProductsComponent},
-  {path: "**", redirectTo: "home"}
+  { path: 'acceso-denegado', component: AccesoDenegadoComponent },
+  { path: 'sobre-nosotros', component: AboutUsComponent },
+  { path: 'terminos-y-condiciones', component: PoliticasComponent },
+  { path: 'detalles/:id', component: ProductosDetailsComponent },
+  { path: 'productos', component: PageProductosComponent },
+  { path: 'rutinas', component: RutinasComponent },
+  { path: 'detalles-rutinas/:id', component: RutinasDetailsComponent },
+  { path: "addRutinas", component: AddRutinasComponent },
+  { path: "addProductos", component: AddProductosComponent },
+  { path: "editProduct/:id", component: EditProductComponent },
+  { path: "editRutina/:id", component: EditRutinaComponent },
+  { path: "misProductos", component: HistorialComponent },
+  { path: "misRutinas", component: HistorialRutinasComponent },
+  { path: "searchProducts", component: FindProductsComponent },
+  { path: '**', redirectTo: 'home' }
 ];

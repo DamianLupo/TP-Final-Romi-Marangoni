@@ -1,10 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { RutinaInterface } from '../../interface/rutina.interface';
-import { OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RutinaServiceService } from '../../service/rutina.service.service';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RutinaInterface } from '../../interface/rutina.interface';
+import { RutinaServiceService } from '../../service/rutina.service.service';
 import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
@@ -68,7 +66,7 @@ export class EditRutinaComponent implements OnInit{
   }
   protectRoute()
   {
-   this.router.navigate(['/home']);
+   this.router.navigate(['/acceso-denegado']);
   }
 
 

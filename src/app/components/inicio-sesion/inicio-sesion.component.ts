@@ -52,4 +52,12 @@ export class InicioSesionComponent implements OnInit {
       console.error('Error al iniciar sesión con Google:', error);
     });
   }
+  toRegister(){
+    if(!this.usuariosService.usuarioEnSesion){
+      this.router.navigate([`/register`]);
+    }
+    else{
+      this.router.navigate([`/login`]);
+    }
+  }
 }
