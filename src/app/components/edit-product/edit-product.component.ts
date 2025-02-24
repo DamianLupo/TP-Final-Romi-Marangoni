@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Producto } from '../../interface/producto.interface';
-import { FormBuilder, Validators } from '@angular/forms';
-import { inject } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ProductoService } from '../../service/producto.service';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Producto } from '../../interface/producto.interface';
+import { ProductoService } from '../../service/producto.service';
 import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
@@ -70,6 +68,6 @@ productoService=inject(ProductoService);
  }
  protectRoute()
  {
-  this.router.navigate(['/home']);
+  this.router.navigate(['/acceso-denegado']);
  }
 }

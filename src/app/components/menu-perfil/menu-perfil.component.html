@@ -5,41 +5,40 @@
             <h1>Profile</h1>
         </div>
         
-        @if (isLogged) { 
+        @if (isLogged && usuariosService.usuarioEnSesion) { 
             <div [ngClass]="{'close-configuration': closeConfiguration}">
                 <div>
                     <div class="profile-info"></div>
-                <div class="user-info">
-                    <h2>{{usuariosService.usuarioEnSesion!.nombre}}</h2>
-                    <p>&#64;{{usuariosService.usuarioEnSesion!.username}}</p>
-                </div>
-            </div>
-          
-            <div class="options">
-                <div class="option">
-                    <div class="icon"><i class="fas fa-user"></i></div>
-                    <span>{{usuariosService.usuarioEnSesion!.nombre}} {{usuariosService.usuarioEnSesion!.apellido}}</span>
-                </div>
-                <div class="option">
-                    <div class="icon"><i class="fas fa-key"></i></div>
-                    <span>*********</span>
-                </div>
-                <div class="option">
-                    <div class="icon"><i class="fas fa-phone"></i></div>
-                    <span>{{ usuariosService.usuarioEnSesion!.numDeTelefono.toString().slice(0, 3) + '-***-' + usuariosService.usuarioEnSesion!.numDeTelefono.toString().slice(-2) }}</span>
-                </div>
-                <div class="option">
-                    <div class="icon"><i class="fas fa-envelope"></i></div>
-                    <span>{{ usuariosService.usuarioEnSesion!.email.slice(0, 3) + '...@' + usuariosService.usuarioEnSesion!.email.split('@')[1] }}</span>
+                    <div class="user-info">
+                        <h2>{{usuariosService.usuarioEnSesion.nombre}}</h2>
+                        <p>&#64;{{usuariosService.usuarioEnSesion.username}}</p>
+                    </div>
                 </div>
           
-                <a (click)="openPasswordModification=true; closeConfiguration=true;" class="modify-btn">Modificar usuario</a>
-                <a (click)="openPasswordDelete=true; closeConfiguration=true;" class="delete-btn">Borrar usuario</a>
+                <div class="options">
+                    <div class="option">
+                        <div class="icon"><i class="fas fa-user"></i></div>
+                        <span>{{usuariosService.usuarioEnSesion.nombre}} {{usuariosService.usuarioEnSesion.apellido}}</span>
+                    </div>
+                    <div class="option">
+                        <div class="icon"><i class="fas fa-key"></i></div>
+                        <span>*********</span>
+                    </div>
+                    <div class="option">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <span>{{ usuariosService.usuarioEnSesion.numDeTelefono.toString().slice(0, 3) + '-***-' + usuariosService.usuarioEnSesion.numDeTelefono.toString().slice(-2) }}</span>
+                    </div>
+                    <div class="option">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <span>{{ usuariosService.usuarioEnSesion.email.slice(0, 3) + '...@' + usuariosService.usuarioEnSesion.email.split('@')[1] }}</span>
+                    </div>
+          
+                    <a (click)="openPasswordModification=true; closeConfiguration=true;" class="modify-btn">Modificar usuario</a>
+                    <a (click)="openPasswordDelete=true; closeConfiguration=true;" class="delete-btn">Borrar usuario</a>
+                </div>
             </div>
-            </div>
-            
         }
-        @else{
+        @else {
             <div class="profile-info">
                 <h2>No hay usuario en sesión</h2>
             </div>

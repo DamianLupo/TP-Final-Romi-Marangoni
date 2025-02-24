@@ -38,9 +38,10 @@ export class MenuPerfilComponent implements OnInit {
     this.menuStateService.isOpen$.subscribe(isOpen => {
       this.isOpen = isOpen;
     });
+    this.usuariosService.initializeUsuarioEnSesion();
   }
   usuariosService = inject(UsuarioService);
-  usuario = this.usuariosService.usuarioEnSesion;
+  usuario = this.usuariosService.obtenerUsuarioDeLocalStorage;
   isLogged = this.usuario !== undefined;
   constructor(private router: Router, private menuStateService: MenuStateService){}
   requestPassword()

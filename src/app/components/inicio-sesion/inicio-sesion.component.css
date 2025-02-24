@@ -71,14 +71,19 @@
     cursor: pointer;
 }
 
-.register-text a{
+.register-text button{
     color: #000;
+    border: none;
+    padding: 0;
+    background: none;
     text-decoration: none;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.register-text a:hover {
+.register-text button:hover {
     text-decoration: underline;
 }
 .register-container{

@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Producto } from '../../interface/producto.interface';
-import { ProductoService } from '../../service/producto.service';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProductoService } from '../../service/producto.service';
 import { UsuarioService } from '../../service/usuario.service';
 
 @Component({
@@ -82,7 +81,7 @@ export class AddProductosComponent implements OnInit {
   }
   protectRoute()
   {
-   this.router.navigate(['/home']);
+   this.router.navigate(['/acceso-denegado']);
   }
 
 }

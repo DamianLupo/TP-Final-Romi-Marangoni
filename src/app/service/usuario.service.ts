@@ -17,9 +17,12 @@ export class UsuarioService {
   initializeUsuarioEnSesion(): void {
     this.usuarioEnSesion = this.obtenerUsuarioDeLocalStorage(); //Guardo el usuario del local storage para no perderlo entre la navegacion de paginas
   }
-  private obtenerUsuarioDeLocalStorage(): Usuario | undefined {
-    const usuarioGuardado = localStorage.getItem('usuarioEnSesion');
-    return usuarioGuardado ? JSON.parse(usuarioGuardado) : undefined;  //Obtengo el usuario guardado en el local storage
+  obtenerUsuarioDeLocalStorage(): Usuario | undefined {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const usuarioGuardado = localStorage.getItem('usuarioEnSesion');
+      return usuarioGuardado ? JSON.parse(usuarioGuardado) : undefined;  // Obtengo el usuario guardado en el local storage
+    }
+    return undefined; // Return undefined if localStorage is not available
   }
   getUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.urlBase).pipe(
@@ -73,6 +76,8 @@ export class UsuarioService {
         email: profile.getEmail(),
         nombre: profile.getName(),
       };
+    }).catch((error: any) => {
+      console.error('Error during Google sign-in:', error);
     });
   }
 

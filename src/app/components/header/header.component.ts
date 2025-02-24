@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit{
   }
   usuariosService = inject(UsuarioService);
   verificador=false;
-  usuario = this.usuariosService.usuarioEnSesion;
+  usuario = this.usuariosService.obtenerUsuarioDeLocalStorage();
   isLogged = this.usuario !== undefined;
   logout() {
     this.usuariosService.cerrarSesion();
