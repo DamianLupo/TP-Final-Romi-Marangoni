@@ -15,6 +15,12 @@
         </div>
       </div>
     <div class="grid-product">
+      @if(arrayDeAmbos.length==0)
+      {
+        <div class="error-msg">
+          No encontramos articulos que coincidan con tu busqueda
+        </div>
+      }
         @for(producto of arrayDeAmbos; track producto.id){
             <div class="producto">
                 <img [src]="producto.imagen" class="imagen-producto" alt="imagen">

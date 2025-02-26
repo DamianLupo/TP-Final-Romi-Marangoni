@@ -77,7 +77,7 @@ export class ProductosDetailsComponent implements OnInit {
     const quantity = 1;
     const unitPrice =  this.producto.precio;
     const productId = this.producto.id;
-    
+
     if(this.usuarioService.usuarioEnSesion){
       this.mercadoPagoService.createPreference(title, quantity, unitPrice, productId).subscribe(
         response => {
@@ -85,6 +85,7 @@ export class ProductosDetailsComponent implements OnInit {
           window.location.href = response.init_point;
           if(this.usuarioService.usuarioEnSesion?.productos){
             this.usuarioService.usuarioEnSesion.productos.push(this.producto);
+            localStorage.setItem('usuarioEnSesion', JSON.stringify(this.usuarioService.usuarioEnSesion));
             this.usuarioService.putUser(this.usuarioService.usuarioEnSesion, this.usuarioService.usuarioEnSesion.id).subscribe({
               next: ()=>{
                 console.log("Producto agregado al usuario");
