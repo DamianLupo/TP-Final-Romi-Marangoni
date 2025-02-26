@@ -20,7 +20,7 @@
     align-items: center;
     gap: 1rem;
   }
-  
+
   .filtros {
     display: flex;
     justify-content: space-between;
@@ -32,7 +32,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   select, input[type="number"] {
     padding: 8px 15px;
     border: 1px solid #ddd;
@@ -43,25 +43,25 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  
+
   select:hover, input[type="number"]:hover {
     border-color: #000;
   }
-  
+
   select:focus, input[type="number"]:focus {
     outline: none;
     border-color: #000;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
   }
-  
+
   input[type="number"] {
     width: 150px;
   }
-  
+
   input[type="number"]::placeholder {
     color: #666;
   }
-  
+
   button {
     background-color: #000;
     color: #fff;
@@ -72,13 +72,13 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  
+
   button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     background: linear-gradient(45deg, #000, #333);
   }
-  
+
   .grid-product {
     display: flex;
     flex-wrap: wrap;
@@ -87,7 +87,7 @@
     width: 100%;
     max-width: 1200px;
   }
-  
+
   .producto {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -101,7 +101,7 @@
     text-align: center;
     background-color: white;
   }
-  
+
   h2 {
     text-align: center;
     margin: 0;
@@ -110,20 +110,20 @@
     font-weight: bold;
     color: #333;
   }
-  
+
   .imagen-producto {
     width: 180px;
     height: 180px;
     object-fit: cover;
     border-radius: 8px;
   }
-  
+
   p {
     font-family: Arial, sans-serif;
     color: #666;
     font-size: 0.9rem;
   }
-  
+
   .producto button {
     background-color: #000;
     color: #fff;
@@ -135,17 +135,17 @@
     font-weight: bold;
     text-decoration: none;
   }
-  
+
   .producto button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     background: linear-gradient(45deg, #000, #333);
   }
-  
+
   .producto button:active {
     transform: translateY(1px);
   }
-  
+
   .producto button::before {
     content: '';
     position: absolute;
@@ -161,19 +161,30 @@
     );
     transition: 0.5s;
   }
-  
+
   .producto button:hover::before {
     left: 100%;
   }
-  
+
   @media (max-width: 768px) {
     .filtros-container,
     .filtros {
       flex-direction: column;
       width: 90%;
     }
-  
+
     select, input[type="number"] {
       width: 100%;
     }
+  }
+  .error-msg {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.1rem;
+    width: 100%;
   }

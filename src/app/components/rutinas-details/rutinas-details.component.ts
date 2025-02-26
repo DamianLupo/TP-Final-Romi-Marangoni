@@ -77,6 +77,7 @@ export class RutinasDetailsComponent implements OnInit {
         window.location.href = response.init_point;
         if(this.usuarioService.usuarioEnSesion?.rutinas){
           this.usuarioService.usuarioEnSesion.rutinas.push(this.rutina);
+          localStorage.setItem('usuarioEnSesion', JSON.stringify(this.usuarioService.usuarioEnSesion));
           this.usuarioService.putUser(this.usuarioService.usuarioEnSesion, this.usuarioService.usuarioEnSesion?.id).subscribe({
             next: ()=>{
               console.log("Rutina agregada exitosamente");
