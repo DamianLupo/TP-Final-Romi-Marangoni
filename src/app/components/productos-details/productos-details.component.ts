@@ -17,7 +17,7 @@ import { PopUpWarningComponent } from '../pop-up-warning/pop-up-warning.componen
   styleUrl: './productos-details.component.css'
 })
 export class ProductosDetailsComponent implements OnInit {
-  producto : any;
+  producto: any = null;
   isOpen: boolean = false;
   type: string = '';
   newComment: string ="";
