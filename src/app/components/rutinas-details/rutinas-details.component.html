@@ -8,13 +8,19 @@
   <div class="product-comments-container">
     <div>
       <div class="product-container">
-        @if(rutina && rutina.nombre)
-        {
-          <h1>{{rutina.nombre}}</h1>
-        }
-          <img [src]="rutina.imagen" alt="imagen">
-          <p>{{rutina.descripcion}}</p>
-          <p>{{rutina.precio}} USD</p>
+        @if(rutina) {
+          @if(rutina.nombre) {
+            <h1>{{rutina.nombre}}</h1>
+          }
+          @if(rutina.imagen) {
+            <img [src]="rutina.imagen" alt="imagen">
+          }
+          @if(rutina.descripcion) {
+            <p>{{rutina.descripcion}}</p>
+          }
+          @if(rutina.precio) {
+            <p>{{rutina.precio}} USD</p>
+          }
           @if(!comprado && !isRutinaInUserHistory()){
             <button (click)="createPaymentPreference()">Comprar</button>
           }
@@ -26,7 +32,8 @@
             <button (click)="type='eliminar'; togglePopUp()">Eliminar</button>
             <button (click)="type='editar'; togglePopUp()">Editar</button>
           }
-        </div>
+        }
+      </div>
           @if(this.usuarioService.usuarioEnSesion && !verificador)
         {
           <div class="comments-section">
