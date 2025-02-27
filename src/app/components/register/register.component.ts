@@ -30,6 +30,9 @@ export class RegisterComponent {
 
   ngOnInit(): void {
     this.usuariosService.getUsuarios().subscribe();
+    this.registerForm.get('email')?.valueChanges.subscribe(() => {
+      this.verificadorMail = false;
+    });
   }
 
   onRegister() {
@@ -41,14 +44,12 @@ export class RegisterComponent {
       isAdmin: false,
       numDeTelefono: Number(this.registerForm.getRawValue().numDeTelefono)
     };
+
     this.usuariosService.returnbyEmail(newUser.email);
-    if(this.usuariosService.usuarioEnSesion)
-    {
-      this.verificadorMail=true;
+    if(this.usuariosService.usuarioEnSesion) {
+      this.verificadorMail = true;
+      return; // Agregamos return aquí para evitar la creación del usuario
     }
-    if(this.verificadorMail)return;
-
-
 
     this.usuariosService.addUsuario(newUser).subscribe({
       next: () => {
