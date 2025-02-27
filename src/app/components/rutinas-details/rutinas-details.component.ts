@@ -17,7 +17,7 @@ import { RutinaServiceService } from './../../service/rutina.service.service';
   styleUrl: './rutinas-details.component.css'
 })
 export class RutinasDetailsComponent implements OnInit {
-  rutina : any;
+  rutina: any = null;
   isOpen: boolean = false;
   type: string = '';
   routes = inject(ActivatedRoute);
@@ -28,11 +28,11 @@ export class RutinasDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
     this.obtenerRutinaId(id);
-    this.verificador=this.usuarioService.isAdmin();
+    this.verificador = this.usuarioService.isAdmin();
     this.closeWarning.isOpenWarning$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
-    this.comprado=history.state.comprado;
+    this.comprado = this.router.getCurrentNavigation()?.extras?.state?.['comprado'] || false;
   }
   comprado: boolean = false;
   usuarioService = inject(UsuarioService);
@@ -152,6 +152,15 @@ export class RutinasDetailsComponent implements OnInit {
       },
       error: (e) => console.error('Error al agregar comentario:', e)
     });
+  }
+
+  isRutinaInUserHistory(): boolean {
+    if (!this.usuarioService.usuarioEnSesion?.rutinas) {
+      return false;
+    }
+    return this.usuarioService.usuarioEnSesion.rutinas.some(
+      rutina => rutina.id === this.rutina.id
+    );
   }
 
 }
