@@ -167,3 +167,12 @@
   gap: 120px;
 }
 
+.already-purchased {
+  color: #666;
+  font-style: italic;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+

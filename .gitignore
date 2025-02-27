@@ -50,3 +50,7 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# API-Resend specific
+/api-resend/node_modules
+/api-resend/.env

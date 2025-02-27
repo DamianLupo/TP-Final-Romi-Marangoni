@@ -8,12 +8,18 @@
   <div class="product-comments-container">
     <div>
       <div class="product-container">
-        <h1>{{rutina.nombre}}</h1>
+        @if(rutina && rutina.nombre)
+        {
+          <h1>{{rutina.nombre}}</h1>
+        }
           <img [src]="rutina.imagen" alt="imagen">
           <p>{{rutina.descripcion}}</p>
           <p>{{rutina.precio}} USD</p>
-          @if(!comprado){
+          @if(!comprado && !isRutinaInUserHistory()){
             <button (click)="createPaymentPreference()">Comprar</button>
+          }
+          @if(isRutinaInUserHistory()){
+            <p class="already-purchased">Ya tienes esta rutina en tu historial</p>
           }
       
           @if(verificador){
