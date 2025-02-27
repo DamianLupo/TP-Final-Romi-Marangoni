@@ -28,11 +28,17 @@ export class RutinasDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = this.routes.snapshot.paramMap.get('id');
     this.obtenerRutinaId(id);
-    this.verificador=this.usuarioService.isAdmin();
+    this.verificador = this.usuarioService.isAdmin();
     this.closeWarning.isOpenWarning$.subscribe((isOpen) => {
       this.isOpen = isOpen;
     });
-    this.comprado=history.state.comprado;
+    
+    // Verificar si el usuario ya tiene la rutina comprada
+    if (this.usuarioService.usuarioEnSesion?.rutinas) {
+      this.comprado = this.usuarioService.usuarioEnSesion.rutinas.some(
+        rutina => rutina.id === id
+      );
+    }
   }
   comprado: boolean = false;
   usuarioService = inject(UsuarioService);

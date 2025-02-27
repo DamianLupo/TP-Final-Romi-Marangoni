@@ -167,3 +167,14 @@
   gap: 120px;
 }
 
+.rutina-comprada {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  border: 1px solid #4CAF50;
+}
+
